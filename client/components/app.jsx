@@ -15,12 +15,11 @@ App = React.createClass({
 
   renderCards(){
     return this.state.displayCard.map((card, i) => {
-      return <Card key={ i } {...card} />
-    })
+      return <Card key={ i } {...card} />;
+    });
   },
 
   render(){
-    console.log('render', this.state)
     return (
       <div className='container'>
         <header>
@@ -30,7 +29,7 @@ App = React.createClass({
           <button type='submit'>Fetch</button>
         </form>
         <section className='display-card'>
-          {this.renderCards()}
+          { this.renderCards() }
         </section>
       </div>
     );

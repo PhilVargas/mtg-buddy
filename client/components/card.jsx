@@ -11,10 +11,10 @@ Card = React.createClass({
     name: React.PropTypes.string.isRequired,
     rarity: React.PropTypes.string.isRequired,
     set: React.PropTypes.string.isRequired,
-    text: React.PropTypes.string.isRequired,
-    types: React.PropTypes.array.isRequired,
     subtypes: React.PropTypes.array.isRequired,
-    supertypes: React.PropTypes.array.isRequired
+    supertypes: React.PropTypes.array.isRequired,
+    text: React.PropTypes.string.isRequired,
+    types: React.PropTypes.array.isRequired
   },
 
   getDefaultProps(){
@@ -64,8 +64,8 @@ Card = React.createClass({
 
   renderManaSymbols(){
     return this.props.manaCost.match(/{[\d\/\w]+}+/ig).map((match, index) => {
-      return <i key={ index } className={ `mtg ${this.manaMap[match.toLowerCase()]}` }></i>
-    })
+      return <i key={ index } className={ `mtg ${this.manaMap[match.toLowerCase()]}` }></i>;
+    });
   },
 
   render(){
@@ -77,7 +77,7 @@ Card = React.createClass({
           <div>block: { this.props.block }</div>
           <div>set: { this.props.set }</div>
           <div>colors: { this.props.colors.join(' ') }</div>
-          <div>mana cost: {this.renderManaSymbols()}</div>
+          <div>mana cost: { this.renderManaSymbols() }</div>
           <div>converted mana cost: { this.props.cmc }</div>
           <div>rarity: { this.props.rarity }</div>
           <div>types: { this.props.types.join(' ') }</div>
