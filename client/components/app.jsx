@@ -1,28 +1,37 @@
 App = React.createClass({
 
-  mixins: [ReactMeteorData],
-
-  getMeteorData(){
+  getInitialState(){
     return {
-      cards: Cards.find({}).fetch()
+      displayCard: Cards.find({}).fetch()
     };
   },
 
-  renderCards(){
-    return this.data.cards.map((card, i) => {
-      return <Card key={ i } {...card} />;
+  handleSubmit(e){
+    e.preventDefault();
+    this.setState({
+      displayCard: Cards.find({ }).fetch()
     });
   },
 
+  renderCards(){
+    return this.state.displayCard.map((card, i) => {
+      return <Card key={ i } {...card} />
+    })
+  },
+
   render(){
+    console.log('render', this.state)
     return (
       <div className='container'>
         <header>
           <h1>Cards yo</h1>
         </header>
-        <ul>
-          { this.renderCards() }
-        </ul>
+        <form onSubmit={ this.handleSubmit } className='search-form'>
+          <button type='submit'>Fetch</button>
+        </form>
+        <section className='display-card'>
+          {this.renderCards()}
+        </section>
       </div>
     );
   }
