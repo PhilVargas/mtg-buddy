@@ -16,6 +16,7 @@
   },
 
   "globals": {
+    "Cards": true,
     "React": true
   },
 
@@ -221,7 +222,7 @@
     "react/jsx-max-props-per-line": 0,
     "react/jsx-no-duplicate-props": [1, { "ignoreCase": true }],
     "react/jsx-no-literals": 0,
-    "react/jsx-no-undef": 1,
+    "react/jsx-no-undef": 0,
     "react/jsx-quotes": [1, "single", "avoid-escape"],
     "react/jsx-sort-prop-types": [1, { "ignoreCase": true }],
     "react/jsx-sort-props": 0,
