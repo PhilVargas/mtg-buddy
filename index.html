@@ -1,14 +1,37 @@
 <head>
   <title>mtg-buddy</title>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jninnes/mtgicons/master/dist/mtgicons.css" />
+  <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css'>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <div class="sticky">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">My Site</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" placeholder="Card Name">
+              </div>
+              <div class="large-4 small-3 columns">
+                <a href="#" class="alert button expand">Search</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <div class="container">
+    {{> cardTemplate}}
+  </div>
 
-  {{> hello}}
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js'></script>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>

@@ -1,0 +1,33 @@
+<template name="cardTemplate">
+  <div class="row card-container">
+    <div class="card-title">
+      <h2>{{display.name}}</h2>
+    </div>
+    <div class="columns large-3">
+      <div class="card-preview">
+        <img src={{display.imageUrl}} />
+      </div>
+    </div>
+    <div class="columns large-9">
+      <div class="card-attribute row">
+        mana cost:
+        {{#each display.manaSymbolClasses}}
+          <i class={{value}}></i>
+        {{/each}}
+      </div>
+      <div class="card-attribute row">Converted Mana Cost: {{display.cmc}}</div>
+      <div class="card-attribute row">Colors: {{display.colors}}</div>
+      <div class="card-attribute row">Power: {{display.power}}</div>
+      <div class="card-attribute row">Toughness: {{display.toughness}}</div>
+      <div class="card-attribute row">Rarity: {{display.rarity}}</div>
+      <div class="card-attribute row">Super-Types: {{display.supertypes}}</div>
+      <div class="card-attribute row">Types: {{display.types}}</div>
+      <div class="card-attribute row">Sub-Types: {{display.subtypes}}</div>
+      <div class="card-attribute row">Set: {{display.set}}</div>
+      <div class="card-attribute row">Block: {{display.block}}</div>
+      <br />
+      <div class="card-attribute row"><div class="columns large-6">{{display.text}}</div></div>
+      <div class="card-attribute row"></div>
+    </div>
+  </div>
+</template>
