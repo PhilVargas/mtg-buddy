@@ -1,14 +1,14 @@
-let manaMap, manaCostToSymbol;
-
+let manaMap;
 
 Template.cardTemplate.helpers({
   display(){
     let displayCard;
+
     displayCard = Object.assign({},
-      {manaCost: '{0}', cost: 0, text: '', power: null, toughness: null, types: [], subtypes: [], supertypes: [], colors: ['colorless']},
+      { manaCost: '{0}', cost: 0, text: '', power: null, toughness: null, types: [], subtypes: [], supertypes: [], colors: ['colorless'] },
       Cards.findOne({ name: { $regex: 'abrupt', $options: 'i' } })
     );
-    displayCard.manaSymbolClasses = displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match, index) => {
+    displayCard.manaSymbolClasses = displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
       return { value: `mtg ${manaMap[match.toLowerCase()]}` };
     });
     return displayCard;
@@ -47,10 +47,4 @@ manaMap = {
   '{2/b}': 'hybrid-2b',
   '{2/r}': 'hybrid-2r',
   '{2/g}': 'hybrid-2g'
-}
-
-// renderManaSymbols(){
-//   return this.props.manaCost.match(/{[\d\/\w]+}+/ig).map((match, index) => {
-//     return <i key={ index } className={ `mtg ${this.manaMap[match.toLowerCase()]}` }></i>;
-//   });
-// }
+};
