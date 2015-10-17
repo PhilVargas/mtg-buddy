@@ -1,5 +1,5 @@
 Router.route('/', function(){
-  this.render('searchIndex');
+  this.render('SearchIndex');
 });
 
 Router.route('/search', function(){
@@ -16,10 +16,12 @@ Router.route('/search', function(){
     query.rarity = params.rarity;
   }
 
-  this.render('searchShow', {
+  this.render('SearchShow', {
     data(){
       return { results: Cards.find(query).fetch() };
     }
   });
+}, {
+  name: 'search.show'
 });
 
