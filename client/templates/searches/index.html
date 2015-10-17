@@ -1,0 +1,29 @@
+<template name="searchIndex">
+  <div class="container">
+    <div class="row">
+      <h1>Card Search</h1>
+    </div>
+    <div class="row">
+      <div class="columns">
+        <form id="search-form" action='/search' name="search">
+          <div class="row">
+            <div class="columns large-4 small-12">
+              <input type="text" name="name" placeholder="Card Name">
+            </div>
+            <div class="columns large-4 small-12 end">
+              <select id="rarity" name="rarity">
+                <option value='' selected disabled>Choose Rarity</option>
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Mythic Rare">Mythic</option>
+              </select>
+            </div>
+          </div>
+          <button class='btn small' type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
