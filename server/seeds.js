@@ -47,6 +47,7 @@ Meteor.methods({
             multiverseid: card.multiverseid,
             name: card.name,
             colors: card.colors || ['colorless'],
+            types: card.types || [],
             subtypes: card.subtypes || [],
             supertypes: card.supertypes || [],
             power: card.power || 0,
