@@ -5,18 +5,36 @@
     </div>
     <div class="row">
       <div class="columns">
-        <form id="search-form" action='/search' name="search">
+        <form id="search" action='/search' name="search">
           <div class="row">
             <div class="columns large-4 small-12">
               <input type="text" name="name" placeholder="Card Name">
             </div>
             <div class="columns large-4 small-12 end">
               <select id="rarity" name="rarity">
-                <option value='' selected disabled>Choose Rarity</option>
+                <option value='' selected>Choose Rarity</option>
                 <option value="Common">Common</option>
                 <option value="Uncommon">Uncommon</option>
                 <option value="Rare">Rare</option>
                 <option value="Mythic Rare">Mythic</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="columns large-4 small-12">
+              <select id="block" name="block">
+                <option value='' selected disabled>Any Block</option>
+                {{#each blockList}}
+                  <option value={{name}}>{{name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="columns large-4 small-12 end">
+              <select id="set" name="set">
+                <option value='' selected>Any Set</option>
+                {{#each setList}}
+                  <option value={{name}}>{{name}}</option>
+                {{/each}}
               </select>
             </div>
           </div>

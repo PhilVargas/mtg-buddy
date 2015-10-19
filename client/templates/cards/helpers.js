@@ -1,16 +1,15 @@
 let manaMap;
 
-Template.cardTemplate.helpers({
+Template.CardShow.helpers({
   display(){
     let displayCard;
 
-    displayCard = Object.assign({},
-      { manaCost: '{0}', cost: 0, text: '', power: null, toughness: null, types: [], subtypes: [], supertypes: [], colors: ['colorless'] },
-      Cards.findOne({ name: { $regex: 'abrupt', $options: 'i' } })
-    );
+    displayCard = Object.assign({}, this.displayCard);
+
     displayCard.manaSymbolClasses = displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
       return { value: `mtg ${manaMap[match.toLowerCase()]}` };
     });
+
     return displayCard;
   }
 });

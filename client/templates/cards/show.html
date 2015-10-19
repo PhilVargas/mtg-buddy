@@ -1,4 +1,4 @@
-<template name="cardTemplate">
+<template name="CardShow">
   <div class="row card-container">
     <div class="card-title">
       <h2>{{display.name}}</h2>
@@ -23,10 +23,10 @@
       <div class="card-attribute row">Super-Types: {{display.supertypes}}</div>
       <div class="card-attribute row">Types: {{display.types}}</div>
       <div class="card-attribute row">Sub-Types: {{display.subtypes}}</div>
-      <div class="card-attribute row">Set: {{display.set}}</div>
-      <div class="card-attribute row">Block: {{display.block}}</div>
+      <div class="card-attribute row">Set: {{displaySet}}</div>
+      <div class="card-attribute row">Block: {{displayBlock}}</div>
       <br />
-      <div class="card-attribute row"><div class="columns large-6">{{display.text}}</div></div>
+      <div class="card-attribute row"><div class="columns large-6">{{display.oracle}}</div></div>
       <div class="card-attribute row"></div>
     </div>
   </div>
