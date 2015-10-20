@@ -45,25 +45,29 @@
         </select>
       </div>
     </div>
-    <fieldset>
-      <div class="row collapse">
-        {{#each colors}}
-          <div class="columns large-2">
-            {{#each colorGroup}}
-              <div class="row">
-                <label>
-                  <input type="checkbox" name="colors[]" value={{value}} />
-                  {{#each icon}}
-                    <i class="mtg mana-{{this}}"></i>
-                  {{/each}}
-                  ({{label}})
-                </label>
+    <div class="row">
+      <div class="columns large-8 large-centered small-11 small-centered">
+        <fieldset>
+          <div class="row collapse">
+            {{#each colors}}
+              <div class="columns large-3 small-6">
+                {{#each colorGroup}}
+                  <div class="row">
+                    <label>
+                      <input type="checkbox" name="colors[]" value={{value}} />
+                      {{#each icon}}
+                        <i class="mtg mana-{{this}}"></i>
+                      {{/each}}
+                      {{label}}
+                    </label>
+                  </div>
+                {{/each}}
               </div>
             {{/each}}
           </div>
-        {{/each}}
+        </fieldset>
       </div>
-    </fieldset>
+    </div>
     <button class='btn small' type="submit">Search</button>
   </form>
 </template>
