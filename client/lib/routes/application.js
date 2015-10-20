@@ -17,7 +17,7 @@ Router.route('/search', function(){
   let query, params;
 
   params = this.params.query;
-  query = { $and: [] };
+  query = { $and: [ { multiverseid: { $exists: true } } ] };
 
   if (params.name) {
     query.$and.push({ name: { $regex: params.name, $options: 'i' } });
