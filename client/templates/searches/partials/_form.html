@@ -1,7 +1,7 @@
 <template name="SearchForm">
   <form id="search" action='/search' name="search">
     <div class="row">
-      <div class="columns large-4 small-12">
+      <div class="columns large-4 large-offset-2 small-12">
         <input type="text" name="name" placeholder="Card Name">
       </div>
       <div class="columns large-4 small-12 end">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="columns large-4 small-6">
+      <div class="columns large-4 large-offset-2 small-6">
         <select id="types" name="types">
           <option value='' selected>Any Type</option>
           <option value="Artifact">Artifact</option>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="columns large-4 small-12">
+      <div class="columns large-4 large-offset-2 small-12">
         <select id="set" name="set">
           <option value='' selected>Any Edition</option>
           {{#each blockList}}
@@ -43,6 +43,42 @@
             {{/each}}
           {{/each}}
         </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns large-4 large-offset-2 small-12 power-slider-container">
+        <div class="row power-label-container">
+          <div class="columns large-11">
+            <span>Power: From</span>
+            <span id="min-power-label" class="power-label">Any</span>
+            <span>To</span>
+            <span id="max-power-label" class="power-label">Any</span>
+          </div>
+        </div>
+        <input type="hidden" value="" id='min-power' name='minPower' />
+        <input type="hidden" value="" id='max-power' name='maxPower' />
+        <div class="row">
+          <div class="columns large-11">
+            <div id="power-slider"></div>
+          </div>
+        </div>
+      </div>
+      <div class="columns large-4 small-12 toughness-slider-container end">
+        <div class="row toughness-label-container">
+          <div class="columns large-11 large-offset-1">
+            <span>Toughness: From</span>
+            <span id="min-toughness-label" class="toughness-label">Any</span>
+            <span>To</span>
+            <span id="max-toughness-label" class="toughness-label">Any</span>
+          </div>
+        </div>
+        <input type="hidden" value="" id='min-toughness' name='minToughness' />
+        <input type="hidden" value="" id='max-toughness' name='maxToughness' />
+        <div class="row">
+          <div class="columns large-11 large-offset-1">
+            <div id="toughness-slider"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">

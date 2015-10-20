@@ -35,6 +35,14 @@ Router.route('/search', function(){
     query.$and.push({ $or: [{ setId: params.set }, { blockId: params.set }] });
   }
 
+  if (params.minPower !== '') {
+    query.$and.push({ power: { $lte: +params.minPower } });
+  }
+
+  if (params.maxPower !== '') {
+    query.$and.push({ power: { $gte: +params.maxPower } });
+  }
+
   if (params['fuzzy-type']) {
     query.$and.push({
       $or: [

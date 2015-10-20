@@ -1,4 +1,4 @@
-let checkboxColors;
+let checkboxColors, _initSlider;
 
 Template.SearchIndex.events({
   'submit #search'(e){
@@ -6,6 +6,49 @@ Template.SearchIndex.events({
     Router.go('search.show', {}, { query: $(e.target).serialize() });
   }
 });
+
+Template.SearchForm.onRendered(function(){
+  _initSlider.call(this, 'power');
+  _initSlider.call(this, 'toughness');
+});
+
+_initSlider = function(sliderType){
+  let minValue, maxValue;
+
+  minValue = -1;
+  maxValue = 16;
+  this.$(`#${sliderType}-slider`).slider({
+    range: true,
+    min: minValue,
+    max: maxValue,
+    values: [minValue, maxValue],
+    step: 1,
+    slide: (e, ui) => {
+      let min, minLabel, max, maxLabel;
+
+      if (ui.values[1] === maxValue) {
+        max = '';
+        maxLabel = 'Any';
+      } else {
+        max = ui.values[1];
+        maxLabel = ui.values[1];
+      }
+
+      if (ui.values[0] === minValue) {
+        min = '';
+        minLabel = 'Any';
+      } else {
+        min = ui.values[0];
+        minLabel = ui.values[0];
+      }
+
+      this.$(`#min-${sliderType}-label`).html(minLabel);
+      this.$(`#min-${sliderType}`).val(min);
+      this.$(`#max-${sliderType}-label`).html(maxLabel);
+      this.$(`#max-${sliderType}`).val(max);
+    }
+  });
+};
 
 Template.SearchForm.helpers({
   colors(){
