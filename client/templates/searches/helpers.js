@@ -62,5 +62,11 @@ checkboxColors = {
     { value: 'Green-Blue-Red', icon: ['g', 'u', 'r'], label: '(Temur)' },
     { value: 'Green-Red-White', icon: ['g', 'r', 'w'], label: '(Naya)' }
   ],
-  all: []
+  all: [
+    { value: 'White-Black-Green', icon: ['w', 'b', 'g', 'x'], label: '' },
+    { value: 'White-Green-Blue', icon: ['w', 'g', 'u', 'x'], label: '' },
+    { value: 'Blue-Red-White', icon: ['u', 'r', 'w', 'x'], label: '' },
+    { value: 'Blue-White-Black', icon: ['u', 'w', 'b', 'x'], label: '' },
+    { value: 'Black-Green-Blue', icon: ['b', 'g', 'u', 'x', 'x'], label: '' }
+  ]
 };
