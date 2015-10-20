@@ -6,7 +6,7 @@ Template.CardShow.helpers({
 
     oracle = [];
 
-    if (this.displayCard) {
+    if (this.displayCard && this.displayCard.oracle) {
       oracle = this.displayCard.oracle.split(/({[\d\/\w]+}+)/ig).map((text) => {
         if (text.match(/{[\d\/\w]+}+/ig)) {
           return `<i class="mtg ${manaMap[text.toLowerCase()]}"></i>`;
@@ -24,7 +24,7 @@ Template.CardShow.helpers({
 
     cost = [];
 
-    if (this.displayCard) {
+    if (this.displayCard && this.displayCard.manaCost) {
       cost = this.displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
         return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
       });

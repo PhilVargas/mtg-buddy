@@ -27,8 +27,21 @@ Router.route('/search', function(){
     query.$and.push({ rarity: params.rarity });
   }
 
+  if (params.types) {
+    query.$and.push({ types: params.types });
+  }
+
   if (params.set) {
     query.$and.push({ $or: [{ setId: params.set }, { blockId: params.set }] });
+  }
+
+  if (params['fuzzy-type']) {
+    query.$and.push({
+      $or: [
+        { supertypes: { $regex: params['fuzzy-type'], $options: 'i' } },
+        { subtypes: { $regex: params['fuzzy-type'], $options: 'i' } }
+      ]
+    });
   }
 
   this.render('SearchShow', {
@@ -51,8 +64,8 @@ Router.route('/cards/:_id', {
       data(){
         return {
           displayCard: Cards.findOne({ _id: this.params._id }),
-          displaySet: Sets.findOne(),
-          displayBlock: Blocks.findOne()
+          displaySet: Sets.findOne({ cardIds: this.params._id }),
+          displayBlock: Blocks.findOne({ cardIds: this.params_id })
         };
       }
     });
@@ -60,8 +73,8 @@ Router.route('/cards/:_id', {
   subscriptions(){
     return [
       Meteor.subscribe('Cards', { _id: this.params._id }),
-      Meteor.subscribe('Blocks', { cardIds: { $elemMatch: { $eq: this.params._id } } }, { $fields: ['name'] }),
-      Meteor.subscribe('Sets', { cardIds: { $elemMatch: { $eq: this.params._id } } }, { $fields: ['name'] })
+      Meteor.subscribe('Blocks', { cardIds: this.params._id }, { $fields: ['name'] }),
+      Meteor.subscribe('Sets', { cardIds: this.params._id }, { $fields: ['name'] })
     ];
   }
 });
