@@ -17,7 +17,7 @@ Meteor.methods({
       seed = JSON.parse(seed);
 
       if (!Blocks.findOne({ name: seed.block })) {
-        Blocks.insert({ name: seed.block, createdAt: new Date(), setIds: [], cardIds: [] });
+        Blocks.insert({ name: seed.block, createdAt: new Date(), sets: [], cardIds: [] });
       }
 
       block = Blocks.findOne({ name: seed.block });
@@ -28,13 +28,13 @@ Meteor.methods({
         setId = Sets.insert({
           name: seed.name,
           setCode: seed.code,
-          blockId: block._id,
+          block: block._id,
           createdAt: new Date(),
           cardIds: [],
           releaseDate: new Date(seed.releaseDate)
         });
 
-        Blocks.update({ _id: block._id }, { $push: { setIds: setId } });
+        Blocks.update({ _id: block._id }, { $push: { sets: { _id: setId, name: seed.name } } });
       }
 
       set = Sets.findOne({ name: seed.name });

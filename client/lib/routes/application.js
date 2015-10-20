@@ -2,10 +2,15 @@ Router.route('/', function(){
   this.render('SearchIndex', {
     data(){
       return {
-        blockList: Blocks.find({}, { $fields: ['_id', 'name', 'setIds'] })
+        blockList: Blocks.find({}, { $fields: ['_id', 'name', 'sets'] })
       };
     }
   });
+}, {
+  name: 'search.index',
+  subscriptions(){
+    return [Meteor.subscribe('Blocks')];
+  }
 });
 
 Router.route('/search', function(){
@@ -16,17 +21,14 @@ Router.route('/search', function(){
 
   if (params.name) {
     query.$and.push({ name: { $regex: params.name, $options: 'i' } });
-    // query.name = { $regex: params.name, $options: 'i' };
   }
 
   if (params.rarity) {
     query.$and.push({ rarity: params.rarity });
-    // query.rarity = params.rarity;
   }
 
   if (params.set) {
     query.$and.push({ $or: [{ setId: params.set }, { blockId: params.set }] });
-    // query.setId = params.set;
   }
 
   this.render('SearchShow', {
@@ -35,29 +37,31 @@ Router.route('/search', function(){
     }
   });
 }, {
-  name: 'search.show'
+  name: 'search.show',
+  subscriptions(){
+    return Meteor.subscribe('Cards');
+  }
 });
 
-Router.route('/cards/:multiverseid', function(){
-  let displayCard, displaySet, displayBlock;
-
-  this.wait(() => displayCard = Cards.findOne({ multiverseid: +this.params.multiverseid }));
-  this.wait(() => displaySet = Sets.findOne({ _id: displayCard.setId }, { $fields: ['name'] }));
-  this.wait(() => displayBlock = Blocks.findOne({ _id: displayCard.blockId }, { $fields: ['name'] }));
-
-  if (this.ready()) {
+Router.route('/cards/:_id', {
+  name: 'card.show',
+  loadingTemplate: 'loading',
+  action(){
     this.render('CardShow', {
-      data: () => {
+      data(){
         return {
-          displayCard,
-          displaySet: displaySet.name,
-          displayBlock: displayBlock.name
+          displayCard: Cards.findOne({ _id: this.params._id }),
+          displaySet: Sets.findOne(),
+          displayBlock: Blocks.findOne()
         };
       }
     });
-  } else {
-    this.render('loading');
+  },
+  subscriptions(){
+    return [
+      Meteor.subscribe('Cards', { _id: this.params._id }),
+      Meteor.subscribe('Blocks', { cardIds: { $elemMatch: { $eq: this.params._id } } }, { $fields: ['name'] }),
+      Meteor.subscribe('Sets', { cardIds: { $elemMatch: { $eq: this.params._id } } }, { $fields: ['name'] })
+    ];
   }
-}, {
-  name: 'card.show'
 });
