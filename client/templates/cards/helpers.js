@@ -1,20 +1,41 @@
 let manaMap;
 
 Template.CardShow.helpers({
-  display(){
-    let displayCard;
+  formattedOracle(){
+    let oracle;
 
-    displayCard = Object.assign({}, this.displayCard);
+    oracle = [];
 
-    displayCard.manaSymbolClasses = displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
-      return { value: `mtg ${manaMap[match.toLowerCase()]}` };
-    });
+    if (this.displayCard) {
+      oracle = this.displayCard.oracle.split(/({[\d\/\w]+}+)/ig).map((text) => {
+        if (text.match(/{[\d\/\w]+}+/ig)) {
+          return `<i class="mtg ${manaMap[text.toLowerCase()]}"></i>`;
+        } else {
+          return text;
+        }
+      });
+    }
 
-    return displayCard;
+    return oracle.join('');
+  },
+
+  manaCost(){
+    let cost;
+
+    cost = [];
+
+    if (this.displayCard) {
+      cost = this.displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
+        return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
+      });
+    }
+
+    return cost;
   }
 });
 
 manaMap = {
+  '{t}': 'tap',
   '{0}': 'mana-0',
   '{1}': 'mana-1',
   '{2}': 'mana-2',
