@@ -44,9 +44,19 @@ Router.route('/search', function(){
     });
   }
 
+  if (params.colors) {
+    query.$and.push({
+      $or: params.colors.map((color) => {
+        return color.split('-');
+      }).map((colorSelectors) => {
+        return { colors: { $all: [colorSelectors] } };
+      })
+    });
+  }
+
   this.render('SearchShow', {
     data(){
-      return { results: Cards.find(query).fetch() };
+      return { results: Cards.find(query, { sort: { name: 1 } }).fetch() };
     }
   });
 }, {
