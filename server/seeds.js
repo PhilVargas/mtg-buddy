@@ -1,6 +1,6 @@
 Meteor.methods({
   seed(){
-    let isd, dka, avr, rtr, gtc, dgm, seeds;
+    let isd, dka, avr, rtr, gtc, dgm, ktk, ala, seeds;
 
     isd = Assets.getText('ISD.json');
     dka = Assets.getText('DKA.json');
@@ -8,8 +8,10 @@ Meteor.methods({
     gtc = Assets.getText('GTC.json');
     dgm = Assets.getText('DGM.json');
     rtr = Assets.getText('RTR.json');
+    ktk = Assets.getText('KTK.json');
+    ala = Assets.getText('ALA.json');
 
-    seeds = [isd, dka, avr, rtr, gtc, dgm];
+    seeds = [isd, dka, avr, rtr, gtc, dgm, ktk, ala];
 
     seeds.forEach(function(seed){
       let block, set;
@@ -46,7 +48,7 @@ Meteor.methods({
           attribs = {
             multiverseid: card.multiverseid,
             name: card.name,
-            colors: card.colors || ['colorless'],
+            colors: card.colors || ['Colorless'],
             types: card.types || [],
             subtypes: card.subtypes || [],
             supertypes: card.supertypes || [],
