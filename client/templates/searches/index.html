@@ -22,18 +22,13 @@
           </div>
           <div class="row">
             <div class="columns large-4 small-12">
-              <select id="block" name="block">
+              <select id="set" name="set">
                 <option value='' selected disabled>Any Block</option>
                 {{#each blockList}}
-                  <option value={{name}}>{{name}}</option>
-                {{/each}}
-              </select>
-            </div>
-            <div class="columns large-4 small-12 end">
-              <select id="set" name="set">
-                <option value='' selected>Any Set</option>
-                {{#each setList}}
-                  <option value={{name}}>{{name}}</option>
+                  <option value={{_id}}>--- {{name}} Block ---</option>
+                  {{#each setIds}}
+                    <option value={{_id}}>set {{name}}</option>
+                  {{/each}}
                 {{/each}}
               </select>
             </div>

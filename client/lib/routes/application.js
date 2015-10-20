@@ -1,19 +1,32 @@
 Router.route('/', function(){
-  this.render('SearchIndex');
+  this.render('SearchIndex', {
+    data(){
+      return {
+        blockList: Blocks.find({}, { $fields: ['_id', 'name', 'setIds'] })
+      };
+    }
+  });
 });
 
 Router.route('/search', function(){
   let query, params;
 
   params = this.params.query;
-  query = {};
+  query = { $and: [] };
 
   if (params.name) {
-    query.name = { $regex: params.name, $options: 'i' };
+    query.$and.push({ name: { $regex: params.name, $options: 'i' } });
+    // query.name = { $regex: params.name, $options: 'i' };
   }
 
   if (params.rarity) {
-    query.rarity = params.rarity;
+    query.$and.push({ rarity: params.rarity });
+    // query.rarity = params.rarity;
+  }
+
+  if (params.set) {
+    query.$and.push({ $or: [{ setId: params.set }, { blockId: params.set }] });
+    // query.setId = params.set;
   }
 
   this.render('SearchShow', {
