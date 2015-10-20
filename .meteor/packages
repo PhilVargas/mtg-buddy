@@ -20,3 +20,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 fourseven:scss
 meteortoys:allthings
 iron:router
+linto:jquery-ui
