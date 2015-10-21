@@ -59,8 +59,8 @@ Meteor.methods({
             manaCost: card.manaCost || '{0}',
             oracle: card.text,
             flavor: card.flavor,
-            setId: set._id,
-            blockId: block._id,
+            set: { _id: set._id, name: set.name, setCode: set.setCode },
+            block: { _id: block._id, name: block.name },
             imageUrl: `http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=${card.multiverseid}&type=card`,
             createdAt: new Date()
           };
