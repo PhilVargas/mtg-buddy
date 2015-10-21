@@ -1,5 +1,12 @@
 <template name="SearchShow">
-{{#each results}}
-  <div>{{name}}</div>
-{{/each}}
+<div class="row">
+  <div class="columns">
+    {{#each results}}
+      <div class='row'>
+        <a href='/cards/{{_id}}'>{{name}}</a>
+      </div>
+      {{colors}}
+    {{/each}}
+  </div>
+</div>
 </template>

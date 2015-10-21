@@ -1,21 +1,41 @@
 let manaMap;
 
-Template.cardTemplate.helpers({
-  display(){
-    let displayCard;
+Template.CardShow.helpers({
+  formattedOracle(){
+    let oracle;
 
-    displayCard = Object.assign({},
-      { manaCost: '{0}', cost: 0, text: '', power: null, toughness: null, types: [], subtypes: [], supertypes: [], colors: ['colorless'] },
-      Cards.findOne({ name: { $regex: 'abrupt', $options: 'i' } })
-    );
-    displayCard.manaSymbolClasses = displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
-      return { value: `mtg ${manaMap[match.toLowerCase()]}` };
-    });
-    return displayCard;
+    oracle = [];
+
+    if (this.displayCard && this.displayCard.oracle) {
+      oracle = this.displayCard.oracle.split(/({[\d\/\w]+}+)/ig).map((text) => {
+        if (text.match(/{[\d\/\w]+}+/ig)) {
+          return `<i class="mtg ${manaMap[text.toLowerCase()]}"></i>`;
+        } else {
+          return text;
+        }
+      });
+    }
+
+    return oracle.join('');
+  },
+
+  manaCost(){
+    let cost;
+
+    cost = [];
+
+    if (this.displayCard && this.displayCard.manaCost) {
+      cost = this.displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
+        return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
+      });
+    }
+
+    return cost;
   }
 });
 
 manaMap = {
+  '{t}': 'tap',
   '{0}': 'mana-0',
   '{1}': 'mana-1',
   '{2}': 'mana-2',
