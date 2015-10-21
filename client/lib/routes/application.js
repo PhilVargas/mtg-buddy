@@ -17,7 +17,7 @@ Router.route('/search', function(){
   let query, params;
 
   params = this.params.query;
-  query = { $and: [ { multiverseid: { $exists: true } } ] };
+  query = { $and: [{ multiverseid: { $exists: true } }] };
 
   if (params.name) {
     query.$and.push({ name: { $regex: params.name, $options: 'i' } });
@@ -36,11 +36,19 @@ Router.route('/search', function(){
   }
 
   if (params.minPower !== '') {
-    query.$and.push({ power: { $lte: +params.minPower } });
+    query.$and.push({ power: { $gte: +params.minPower } });
   }
 
   if (params.maxPower !== '') {
-    query.$and.push({ power: { $gte: +params.maxPower } });
+    query.$and.push({ power: { $lte: +params.maxPower } });
+  }
+
+  if (params.minToughness !== '') {
+    query.$and.push({ toughness: { $gte: +params.minToughness } });
+  }
+
+  if (params.maxToughness !== '') {
+    query.$and.push({ toughness: { $lte: +params.maxToughness } });
   }
 
   if (params['fuzzy-type']) {
