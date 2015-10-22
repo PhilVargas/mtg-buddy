@@ -11,7 +11,7 @@ formattedManaCost = function(cost){
     });
   }
 
-  return formattedCost;
+  return formattedCost.join('');
 };
 
 Template.CardsIndex.helpers({
