@@ -1,4 +1,4 @@
-let manaMap, formattedManaCost;
+let manaMap, typesMap, formattedManaCost;
 
 formattedManaCost = function(cost){
   let formattedCost;
@@ -15,7 +15,40 @@ formattedManaCost = function(cost){
 };
 
 Template.CardsIndex.helpers({
-  formattedManaCost
+  formattedManaCost,
+
+  formattedPowerToughness(card){
+    let power, toughness;
+
+    power = parseInt(card.power);
+    toughness = parseInt(card.toughness);
+
+    if (isNaN(power) || isNaN(toughness)) {
+      return '-';
+    } else {
+      return `${power}/${toughness}`;
+    }
+  },
+
+  formattedTypes(card){
+    let types, supertypes, formattedTypes;
+
+    supertypes = card.supertypes.map((supertype) => {
+      return typesMap[supertype];
+    });
+
+    types = card.types.map((type) => {
+      return typesMap[type];
+    });
+
+    formattedTypes = supertypes.concat(types);
+
+    if (card.subtypes.length > 0) {
+      formattedTypes = formattedTypes.concat(['-'], card.subtypes);
+    }
+
+    return formattedTypes.join(' ');
+  }
 });
 
 Template.CardShow.helpers({
@@ -36,11 +69,24 @@ Template.CardShow.helpers({
     }
 
     return oracle.join('');
-  },
+  }
 });
+
+typesMap = {
+  Legendary: 'Leg',
+  Basic: 'Basic',
+  Artifact: 'Art',
+  Creature: 'Cr',
+  Enchantment: 'Enchant',
+  Instant: 'Instant',
+  Land: 'Land',
+  Planeswalker: 'Planeswalker',
+  Sorcery: 'Sorcery'
+};
 
 manaMap = {
   '{t}': 'tap',
+  '{x}': 'mana-x',
   '{0}': 'mana-0',
   '{1}': 'mana-1',
   '{2}': 'mana-2',

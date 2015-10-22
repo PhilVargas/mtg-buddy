@@ -9,8 +9,9 @@
       <div class="row">
         <div class="columns large-3">Title</div>
         <div class="columns large-2">Edition</div>
-        <div class="columns large-2">Type</div>
-        <div class="columns large-2">Mana Cost</div>
+        <div class="columns large-3">Type</div>
+        <div class="columns large-1">Cost</div>
+        <div class="columns large-1">P/T</div>
         <div class="columns large-2">Rarity</div>
       </div>
       {{#each result in results}}
@@ -19,8 +20,9 @@
             <a href='/cards/{{result._id}}'>{{result.name}}</a>
           </div>
           <div class="columns large-2">{{result.set.name}}</div>
-          <div class="columns large-2">{{result.types}}</div>
-          <div class="columns large-2">{{{formattedManaCost result.manaCost}}}</div>
+          <div class="columns large-3">{{formattedTypes result}}</div>
+          <div class="columns large-1">{{{formattedManaCost result.manaCost}}}</div>
+          <div class="columns large-1">{{formattedPowerToughness result}}</div>
           <div class="columns large-2">{{result.rarity}}</div>
         </div>
         {{colors}}
