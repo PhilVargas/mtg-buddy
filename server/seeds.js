@@ -1,6 +1,6 @@
 Meteor.methods({
   seed(){
-    let isd, dka, avr, rtr, gtc, dgm, ktk, ala, seeds;
+    let gpt, sth, isd, dka, avr, rtr, gtc, dgm, ktk, ala, seeds;
 
     isd = Assets.getText('ISD.json');
     dka = Assets.getText('DKA.json');
@@ -10,8 +10,14 @@ Meteor.methods({
     rtr = Assets.getText('RTR.json');
     ktk = Assets.getText('KTK.json');
     ala = Assets.getText('ALA.json');
+    gpt = Assets.getText('GPT.json');
+    sth = Assets.getText('STH.json');
 
-    seeds = [isd, dka, avr, rtr, gtc, dgm, ktk, ala];
+    seeds = [isd, dka, avr, rtr, gtc, dgm, ktk, ala, gpt, sth];
+
+    Cards.remove({});
+    Blocks.remove({});
+    Sets.remove({});
 
     seeds.forEach(function(seed){
       let block, set;
