@@ -1,18 +1,21 @@
 <template name="CardsIndex">
   <div class="row">
     <div class="columns">
-      <div class="row">
-        <div class="columns">
-          <h5>Displaying {{results.length}} results</h5>
-        </div>
+      <div class="panel">
+        <h5>Displaying {{results.length}} results</h5>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
       <div class="row">
         <div class="columns large-3">Title</div>
         <div class="columns large-2">Edition</div>
         <div class="columns large-3">Type</div>
-        <div class="columns large-1">Cost</div>
+        <div class="columns large-2">Cost</div>
         <div class="columns large-1">P/T</div>
-        <div class="columns large-2">Rarity</div>
+        <div class="columns large-1">Rarity</div>
+        <hr />
       </div>
       {{#each result in results}}
         <div class='row'>
@@ -21,10 +24,11 @@
           </div>
           <div class="columns large-2">{{result.set.name}}</div>
           <div class="columns large-3">{{formattedTypes result}}</div>
-          <div class="columns large-1">{{{formattedManaCost result.manaCost}}}</div>
+          <div class="columns large-2">{{{formattedManaCost result.manaCost}}}</div>
           <div class="columns large-1">{{formattedPowerToughness result}}</div>
-          <div class="columns large-2">{{result.rarity}}</div>
+          <div class="columns large-1">{{result.rarity}}</div>
         </div>
+        <hr />
         {{colors}}
       {{/each}}
     </div>
