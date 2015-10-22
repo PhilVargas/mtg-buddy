@@ -17,7 +17,9 @@
       <div class="card-attribute row">Colors: {{displayCard.colors}}</div>
       <div class="card-attribute row">Power: {{displayCard.power}}</div>
       <div class="card-attribute row">Toughness: {{displayCard.toughness}}</div>
-      <div class="card-attribute row">Rarity: {{displayCard.rarity}}</div>
+      <div class="card-attribute row">
+        Rarity: {{{formattedSetSymbol displayCard}}} {{displayCard.rarity}}
+      </div>
       <div class="card-attribute row">Super-Types: {{displayCard.supertypes}}</div>
       <div class="card-attribute row">Types: {{displayCard.types}}</div>
       <div class="card-attribute row">Sub-Types: {{displayCard.subtypes}}</div>
@@ -27,7 +29,7 @@
       <div class="card-attribute row">
         <div class="columns large-6" style="white-space: pre-line">{{{formattedOracle}}}</div>
       </div>
-      <div class="card-attribute row"></div>
+      <div class="card-attribute row"><i>{{displayCard.flavor}}</i></div>
     </div>
   </div>
 </template>

@@ -1,4 +1,4 @@
-let manaMap, typesMap, formattedManaCost;
+let manaMap, typesMap, formattedManaCost, formattedSetSymbol;
 
 formattedManaCost = function(cost){
   let formattedCost;
@@ -14,8 +14,14 @@ formattedManaCost = function(cost){
   return formattedCost.join('');
 };
 
+formattedSetSymbol = function(card){
+  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-')} ${card.rarity.toLowerCase()}"></i>`;
+};
+
 Template.CardsIndex.helpers({
   formattedManaCost,
+
+  formattedSetSymbol,
 
   formattedPowerToughness(card){
     let power, toughness;
@@ -53,6 +59,9 @@ Template.CardsIndex.helpers({
 
 Template.CardShow.helpers({
   formattedManaCost,
+
+  formattedSetSymbol,
+
   formattedOracle(){
     let oracle;
 
