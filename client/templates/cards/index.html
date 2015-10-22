@@ -2,7 +2,7 @@
   <div class="row">
     <div class="columns">
       <div class="panel">
-        <h5>Displaying {{results.length}} results</h5>
+        {{> pagesNav}}
       </div>
     </div>
   </div>
@@ -17,20 +17,21 @@
         <div class="columns large-1">P/T</div>
         <hr />
       </div>
-      {{#each result in results}}
-        <div class='row'>
-          <div class="columns large-3">
-            <a href='/cards/{{result._id}}'>{{result.name}}</a>
-          </div>
-          <div class="columns large-2">{{result.set.name}}</div>
-          <div class="columns large-1">{{{formattedSetSymbol result}}}</div>
-          <div class="columns large-3">{{formattedTypes result}}</div>
-          <div class="columns large-2">{{{formattedManaCost result.manaCost}}}</div>
-          <div class="columns large-1">{{formattedPowerToughness result}}</div>
-        </div>
-        <hr />
-        {{colors}}
-      {{/each}}
+      {{> pages}}
     </div>
   </div>
-  </template>
+</template>
+
+<template name="CardsPage">
+  <div class='row'>
+    <div class="columns large-3">
+      <a href='/cards/{{this._id}}'>{{this.name}}</a>
+    </div>
+    <div class="columns large-2">{{this.set.name}}</div>
+    <div class="columns large-1">{{{formattedSetSymbol this}}}</div>
+    <div class="columns large-3">{{formattedTypes this}}</div>
+    <div class="columns large-2">{{{formattedManaCost this.manaCost}}}</div>
+    <div class="columns large-1">{{formattedPowerToughness this}}</div>
+  </div>
+  <hr />
+</template>

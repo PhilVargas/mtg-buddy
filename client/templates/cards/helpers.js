@@ -57,6 +57,45 @@ Template.CardsIndex.helpers({
   }
 });
 
+Template.CardsPage.helpers({
+  formattedManaCost,
+
+  formattedSetSymbol,
+
+  formattedPowerToughness(card){
+    let power, toughness;
+
+    power = parseInt(card.power);
+    toughness = parseInt(card.toughness);
+
+    if (isNaN(power) || isNaN(toughness)) {
+      return '-';
+    } else {
+      return `${power}/${toughness}`;
+    }
+  },
+
+  formattedTypes(card){
+    let types, supertypes, formattedTypes;
+
+    supertypes = card.supertypes.map((supertype) => {
+      return typesMap[supertype];
+    });
+
+    types = card.types.map((type) => {
+      return typesMap[type];
+    });
+
+    formattedTypes = supertypes.concat(types);
+
+    if (card.subtypes.length > 0) {
+      formattedTypes = formattedTypes.concat(['-'], card.subtypes);
+    }
+
+    return formattedTypes.join(' ');
+  }
+});
+
 Template.CardsShow.helpers({
   formattedManaCost,
 
