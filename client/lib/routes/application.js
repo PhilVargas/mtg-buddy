@@ -42,8 +42,8 @@ Router.route('/cards', function(){
       query.$and.push({ types: params.types });
     }
 
-    if (params.set) {
-      query.$and.push({ $or: [{ setId: params.set }, { blockId: params.set }] });
+    if (params.editionId) {
+      query.$and.push({ $or: [{ 'set._id': params.editionId }, { 'block._id': params.editionId }] });
     }
 
     if (params.minPower !== '') {
