@@ -57,7 +57,7 @@ Template.CardsIndex.helpers({
   }
 });
 
-Template.CardShow.helpers({
+Template.CardsShow.helpers({
   formattedManaCost,
 
   formattedSetSymbol,

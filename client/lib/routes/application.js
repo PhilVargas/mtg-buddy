@@ -23,7 +23,7 @@ Router.route('/cards', function(){
     }
   });
 }, {
-  name: 'card.index',
+  name: 'cards.index',
   subscriptions(){
     let query, params;
 
@@ -86,10 +86,10 @@ Router.route('/cards', function(){
 });
 
 Router.route('/cards/:_id', {
-  name: 'card.show',
+  name: 'cards.show',
   loadingTemplate: 'loading',
   action(){
-    this.render('CardShow', {
+    this.render('CardsShow', {
       data(){
         return {
           displayCard: Cards.findOne({ _id: this.params._id })
