@@ -18,7 +18,7 @@ Router.route('/cards', function(){
     data(){
       let results;
 
-      results = Cards.find({}, { sort: { name: 1 } }).fetch();
+      results = Cards.find({}, { sort: { name: 1 } });
       return { results };
     }
   });
