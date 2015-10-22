@@ -2,14 +2,14 @@ Router.route('/', function(){
   this.render('SearchIndex', {
     data(){
       return {
-        blockList: Blocks.find({}, { $fields: ['_id', 'name', 'sets'] })
+        blockList: Blocks.find()
       };
     }
   });
 }, {
   name: 'search.index',
   subscriptions(){
-    return [Meteor.subscribe('Blocks')];
+    return [Meteor.subscribe('Blocks', {}, { $fields: ['_id', 'name', 'sets'] })];
   }
 });
 
