@@ -11,9 +11,7 @@
     <div class="columns large-9">
       <div class="card-attribute row">
         mana cost:
-        {{#each manaCost}}
-          {{{this}}}
-        {{/each}}
+        {{{formattedManaCost displayCard.manaCost}}}
       </div>
       <div class="card-attribute row">Converted Mana Cost: {{displayCard.cmc}}</div>
       <div class="card-attribute row">Colors: {{displayCard.colors}}</div>
@@ -23,8 +21,8 @@
       <div class="card-attribute row">Super-Types: {{displayCard.supertypes}}</div>
       <div class="card-attribute row">Types: {{displayCard.types}}</div>
       <div class="card-attribute row">Sub-Types: {{displayCard.subtypes}}</div>
-      <div class="card-attribute row">Set: {{displaySet.name}}</div>
-      <div class="card-attribute row">Block: {{displayBlock.name}}</div>
+      <div class="card-attribute row">Set: {{displayCard.setName}}</div>
+      <div class="card-attribute row">Block: {{displayCard.blockName}}</div>
       <br />
       <div class="card-attribute row">
         <div class="columns large-6" style="white-space: pre-line">{{{formattedOracle}}}</div>

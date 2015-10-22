@@ -1,6 +1,25 @@
-let manaMap;
+let manaMap, formattedManaCost;
+
+formattedManaCost = function(cost){
+  let formattedCost;
+
+  formattedCost = [];
+
+  if (cost) {
+    formattedCost = cost.match(/{[\d\/\w]+}+/ig).map((match) => {
+      return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
+    });
+  }
+
+  return formattedCost;
+};
+
+Template.CardsIndex.helpers({
+  formattedManaCost
+});
 
 Template.CardShow.helpers({
+  formattedManaCost,
   formattedOracle(){
     let oracle;
 
@@ -18,20 +37,6 @@ Template.CardShow.helpers({
 
     return oracle.join('');
   },
-
-  manaCost(){
-    let cost;
-
-    cost = [];
-
-    if (this.displayCard && this.displayCard.manaCost) {
-      cost = this.displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
-        return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
-      });
-    }
-
-    return cost;
-  }
 });
 
 manaMap = {

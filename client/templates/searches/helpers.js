@@ -3,7 +3,7 @@ let checkboxColors, _initSlider;
 Template.SearchIndex.events({
   'submit #search'(e){
     e.preventDefault();
-    Router.go('search.show', {}, { query: $(e.target).serialize() });
+    Router.go('card.index', {}, { query: $(e.target).serialize() });
   }
 });
 

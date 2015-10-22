@@ -1,0 +1,30 @@
+<template name="CardsIndex">
+  <div class="row">
+    <div class="columns">
+      <div class="row">
+        <div class="columns">
+          <h5>Displaying {{results.length}} results</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns large-3">Title</div>
+        <div class="columns large-2">Edition</div>
+        <div class="columns large-2">Type</div>
+        <div class="columns large-2">Mana Cost</div>
+        <div class="columns large-2">Rarity</div>
+      </div>
+      {{#each result in results}}
+        <div class='row'>
+          <div class="columns large-3">
+            <a href='/cards/{{result._id}}'>{{result.name}}</a>
+          </div>
+          <div class="columns large-2">{{result.setName}}</div>
+          <div class="columns large-2">{{result.types}}</div>
+          <div class="columns large-2">{{{formattedManaCost result.manaCost}}}</div>
+          <div class="columns large-2">{{result.rarity}}</div>
+        </div>
+        {{colors}}
+      {{/each}}
+    </div>
+  </div>
+  </template>
