@@ -82,34 +82,34 @@ checkboxColors = {
     { value: 'Colorless', icon: ['x'], label: '(Colorless)' }
   ],
   dual: [
-    { value: 'White-Blue', icon: ['w', 'u'], label: '(Azorius)' },
     { value: 'White-Black', icon: ['w', 'b'], label: '(Orzhov)' },
-    { value: 'White-Red', icon: ['w', 'r'], label: '(Boros)' },
-    { value: 'White-Green', icon: ['w', 'g'], label: '(Selesnya)' },
-    { value: 'Blue-Black', icon: ['u', 'b'], label: '(Dimir)' },
+    { value: 'White-Blue', icon: ['w', 'u'], label: '(Azorius)' },
     { value: 'Blue-Red', icon: ['u', 'r'], label: '(Izzet)' },
-    { value: 'Blue-Green', icon: ['u', 'g'], label: '(Simic)' },
-    { value: 'Black-Red', icon: ['b', 'r'], label: '(Rakdos)' },
+    { value: 'Blue-Black', icon: ['u', 'b'], label: '(Dimir)' },
     { value: 'Black-Green', icon: ['b', 'g'], label: '(Golgari)' },
-    { value: 'Red-Green', icon: ['r', 'g'], label: '(Gruul)' }
+    { value: 'Black-Red', icon: ['b', 'r'], label: '(Rakdos)' },
+    { value: 'White-Red', icon: ['r', 'w'], label: '(Boros)' },
+    { value: 'Red-Green', icon: ['r', 'g'], label: '(Gruul)' },
+    { value: 'White-Green', icon: ['g', 'w'], label: '(Selesnya)' },
+    { value: 'Blue-Green', icon: ['g', 'u'], label: '(Simic)' }
   ],
   tri: [
     { value: 'White-Black-Green', icon: ['w', 'b', 'g'], label: '(Abzan)' },
-    { value: 'White-Green-Blue', icon: ['w', 'g', 'u'], label: '(Bant)' },
-    { value: 'Blue-Red-White', icon: ['u', 'r', 'w'], label: '(Jeskai)' },
-    { value: 'Blue-White-Black', icon: ['u', 'w', 'b'], label: '(Esper)' },
-    { value: 'Black-Green-Blue', icon: ['b', 'g', 'u'], label: '(Sultai)' },
-    { value: 'Black-Blue-Red', icon: ['b', 'u', 'r'], label: '(Grixis)' },
-    { value: 'Red-White-Black', icon: ['r', 'w', 'b'], label: '(Mardu)' },
-    { value: 'Red-Black-Green', icon: ['r', 'b', 'g'], label: '(Jund)' },
-    { value: 'Green-Blue-Red', icon: ['g', 'u', 'r'], label: '(Temur)' },
-    { value: 'Green-Red-White', icon: ['g', 'r', 'w'], label: '(Naya)' }
+    { value: 'White-Blue-Black', icon: ['w', 'u', 'b'], label: '(Esper)' },
+    { value: 'White-Blue-Red', icon: ['u', 'r', 'w'], label: '(Jeskai)' },
+    { value: 'Blue-Black-Red', icon: ['u', 'b', 'r'], label: '(Grixis)' },
+    { value: 'Blue-Black-Green', icon: ['b', 'g', 'u'], label: '(Sultai)' },
+    { value: 'Black-Red-Green', icon: ['b', 'r', 'g'], label: '(Jund)' },
+    { value: 'White-Black-Red', icon: ['r', 'w', 'b'], label: '(Mardu)' },
+    { value: 'White-Red-Green', icon: ['r', 'g', 'w'], label: '(Naya)' },
+    { value: 'White-Blue-Green', icon: ['g', 'w', 'u'], label: '(Bant)' },
+    { value: 'Blue-Red-Green', icon: ['g', 'u', 'r'], label: '(Temur)' },
   ],
   all: [
-    { value: 'White-Black-Green', icon: ['w', 'b', 'g', 'x'], label: '' },
-    { value: 'White-Green-Blue', icon: ['w', 'g', 'u', 'x'], label: '' },
-    { value: 'Blue-Red-White', icon: ['u', 'r', 'w', 'x'], label: '' },
-    { value: 'Blue-White-Black', icon: ['u', 'w', 'b', 'x'], label: '' },
-    { value: 'Black-Green-Blue', icon: ['b', 'g', 'u', 'x', 'x'], label: '' }
+    { value: 'White-Blue-Black-Red', icon: ['w', 'u', 'b', 'r'], label: '' },
+    { value: 'White-Black-Red-Green', icon: ['b', 'r', 'g', 'w'], label: '' },
+    { value: 'White-Blue-Black-Green', icon: ['g', 'w', 'u', 'b'], label: '' },
+    { value: 'Blue-Black-Red-Green', icon: ['u', 'b', 'r', 'g'], label: '' },
+    { value: 'White-Blue-Black-Red-Green', icon: ['w', 'u', 'b', 'r', 'g'], label: '' }
   ]
 };
