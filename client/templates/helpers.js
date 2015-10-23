@@ -1,7 +1,7 @@
 Template.Navbar.events({
   'submit #nav-search'(e){
     e.preventDefault();
-    Router.go('search.show', {}, { query: $(e.target).serialize() });
+    Router.go(`/cards?name=${e.target.name.value}`);
   }
 });
 
