@@ -1,3 +1,13 @@
+let rarityRankMap;
+
+rarityRankMap = {
+  'Basic Land': 5,
+  Common: 4,
+  Uncommon: 3,
+  Rare: 2,
+  'Mythic Rare': 1
+};
+
 Meteor.methods({
   seed(){
     let gpt, sth, isd, dka, avr, rtr, gtc, dgm, ktk, ala, seeds;
@@ -61,7 +71,7 @@ Meteor.methods({
             power: (typeof card.power === 'undefined' ? null : +card.power),
             toughness: (typeof card.toughness === 'undefined' ? null : +card.toughness),
             cmc: card.cmc || 0,
-            rarity: card.rarity,
+            rarity: { value: card.rarity, rank: rarityRankMap[card.rarity] },
             manaCost: card.manaCost || '{0}',
             oracle: card.text,
             flavor: card.flavor,

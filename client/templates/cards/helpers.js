@@ -15,7 +15,7 @@ formattedManaCost = function(cost){
 };
 
 formattedSetSymbol = function(card){
-  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.toLowerCase()}"></i>`;
+  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.value.toLowerCase()}"></i>`;
 };
 
 Template.CardsIndex.events({
@@ -31,6 +31,13 @@ Template.CardsIndex.events({
 
     sortOrder = (Pages.sort['set.name'] === 1 ? -1 : 1);
     Pages.set({ sort: { 'set.name': 1 * sortOrder, name: 1 } });
+  },
+
+  'click #rarity-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort['rarity.rank'] === 1 ? -1 : 1);
+    Pages.set({ sort: { 'rarity.rank': 1 * sortOrder, name: 1 } });
   },
 
   'click #cost-header'(){
