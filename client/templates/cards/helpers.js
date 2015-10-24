@@ -15,8 +15,31 @@ formattedManaCost = function(cost){
 };
 
 formattedSetSymbol = function(card){
-  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-')} ${card.rarity.toLowerCase()}"></i>`;
+  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.toLowerCase()}"></i>`;
 };
+
+Template.CardsIndex.events({
+  'click #name-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort.name === 1 ? -1 : 1);
+    Pages.set({ sort: { name: 1 * sortOrder } });
+  },
+
+  'click #edition-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort['set.name'] === 1 ? -1 : 1);
+    Pages.set({ sort: { 'set.name': 1 * sortOrder, name: 1 } });
+  },
+
+  'click #cost-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort.cmc === 1 ? -1 : 1);
+    Pages.set({ sort: { cmc: 1 * sortOrder, 'set.name': 1, name: 1 } });
+  }
+});
 
 Template.CardsIndex.helpers({
   formattedManaCost,
