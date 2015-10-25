@@ -13,6 +13,7 @@
   },
 
   "globals": {
+    "Pages": true,
     "Cards": true,
     "Blocks": true,
     "Sets": true

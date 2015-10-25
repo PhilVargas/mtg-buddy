@@ -1,0 +1,49 @@
+<template name="CardsIndex">
+  <div class="row">
+    <div class="columns">
+      <div class="panel">
+        {{> pagesNav}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <div class="row">
+        <div class="columns large-3">
+          <div id='name-header' class="sortable-header">Name</div>
+        </div>
+        <div class="columns large-2">
+          <div id='edition-header' class="sortable-header">Edition</div>
+        </div>
+        <div class="columns large-1">
+          <div id='rarity-header' class="sortable-header">Rarity</div>
+        </div>
+        <div class="columns large-3">
+          <div id='types-header'>Type</div>
+        </div>
+        <div class="columns large-2">
+          <div id='cost-header' class="sortable-header">Cost</div>
+        </div>
+        <div class="columns large-1">
+          <div id='p-t-header'>P/T</div>
+        </div>
+        <hr />
+      </div>
+      {{> pages}}
+    </div>
+  </div>
+</template>
+
+<template name="CardsPage">
+  <div class='row'>
+    <div class="columns large-3">
+      <a href='/cards/{{this._id}}'>{{this.name}}</a>
+    </div>
+    <div class="columns large-2">{{this.set.name}}</div>
+    <div class="columns large-1">{{{formattedSetSymbol this}}}</div>
+    <div class="columns large-3">{{formattedTypes this}}</div>
+    <div class="columns large-2">{{{formattedManaCost this.manaCost}}}</div>
+    <div class="columns large-1">{{formattedPowerToughness this}}</div>
+  </div>
+  <hr />
+</template>

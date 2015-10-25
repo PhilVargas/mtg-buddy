@@ -1,6 +1,136 @@
-let manaMap;
+let manaMap, typesMap, formattedManaCost, formattedSetSymbol;
 
-Template.CardShow.helpers({
+formattedManaCost = function(cost){
+  let formattedCost;
+
+  formattedCost = [];
+
+  if (cost) {
+    formattedCost = cost.match(/{[\d\/\w]+}+/ig).map((match) => {
+      return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
+    });
+  }
+
+  return formattedCost.join('');
+};
+
+formattedSetSymbol = function(card){
+  return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.value.toLowerCase()}"></i>`;
+};
+
+Template.CardsIndex.events({
+  'click #name-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort.name === 1 ? -1 : 1);
+    Pages.set({ sort: { name: 1 * sortOrder } });
+  },
+
+  'click #edition-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort['set.name'] === 1 ? -1 : 1);
+    Pages.set({ sort: { 'set.name': 1 * sortOrder, name: 1 } });
+  },
+
+  'click #rarity-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort['rarity.rank'] === 1 ? -1 : 1);
+    Pages.set({ sort: { 'rarity.rank': 1 * sortOrder, name: 1 } });
+  },
+
+  'click #cost-header'(){
+    let sortOrder;
+
+    sortOrder = (Pages.sort.cmc === 1 ? -1 : 1);
+    Pages.set({ sort: { cmc: 1 * sortOrder, 'set.name': 1, name: 1 } });
+  }
+});
+
+Template.CardsIndex.helpers({
+  formattedManaCost,
+
+  formattedSetSymbol,
+
+  formattedPowerToughness(card){
+    let power, toughness;
+
+    power = parseInt(card.power);
+    toughness = parseInt(card.toughness);
+
+    if (isNaN(power) || isNaN(toughness)) {
+      return '-';
+    } else {
+      return `${power}/${toughness}`;
+    }
+  },
+
+  formattedTypes(card){
+    let types, supertypes, formattedTypes;
+
+    supertypes = card.supertypes.map((supertype) => {
+      return typesMap[supertype];
+    });
+
+    types = card.types.map((type) => {
+      return typesMap[type];
+    });
+
+    formattedTypes = supertypes.concat(types);
+
+    if (card.subtypes.length > 0) {
+      formattedTypes = formattedTypes.concat(['-'], card.subtypes);
+    }
+
+    return formattedTypes.join(' ');
+  }
+});
+
+Template.CardsPage.helpers({
+  formattedManaCost,
+
+  formattedSetSymbol,
+
+  formattedPowerToughness(card){
+    let power, toughness;
+
+    power = parseInt(card.power);
+    toughness = parseInt(card.toughness);
+
+    if (isNaN(power) || isNaN(toughness)) {
+      return '-';
+    } else {
+      return `${power}/${toughness}`;
+    }
+  },
+
+  formattedTypes(card){
+    let types, supertypes, formattedTypes;
+
+    supertypes = card.supertypes.map((supertype) => {
+      return typesMap[supertype];
+    });
+
+    types = card.types.map((type) => {
+      return typesMap[type];
+    });
+
+    formattedTypes = supertypes.concat(types);
+
+    if (card.subtypes.length > 0) {
+      formattedTypes = formattedTypes.concat(['-'], card.subtypes);
+    }
+
+    return formattedTypes.join(' ');
+  }
+});
+
+Template.CardsShow.helpers({
+  formattedManaCost,
+
+  formattedSetSymbol,
+
   formattedOracle(){
     let oracle;
 
@@ -17,25 +147,24 @@ Template.CardShow.helpers({
     }
 
     return oracle.join('');
-  },
-
-  manaCost(){
-    let cost;
-
-    cost = [];
-
-    if (this.displayCard && this.displayCard.manaCost) {
-      cost = this.displayCard.manaCost.match(/{[\d\/\w]+}+/ig).map((match) => {
-        return `<i class="mtg ${manaMap[match.toLowerCase()]}"></i>`;
-      });
-    }
-
-    return cost;
   }
 });
 
+typesMap = {
+  Legendary: 'Leg',
+  Basic: 'Basic',
+  Artifact: 'Art',
+  Creature: 'Cr',
+  Enchantment: 'Enchant',
+  Instant: 'Instant',
+  Land: 'Land',
+  Planeswalker: 'Planeswalker',
+  Sorcery: 'Sorcery'
+};
+
 manaMap = {
   '{t}': 'tap',
+  '{x}': 'mana-x',
   '{0}': 'mana-0',
   '{1}': 'mana-1',
   '{2}': 'mana-2',

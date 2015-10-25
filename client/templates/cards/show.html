@@ -1,4 +1,4 @@
-<template name="CardShow">
+<template name="CardsShow">
   <div class="row card-container">
     <div class="card-title">
       <h2>{{displayCard.name}}</h2>
@@ -11,25 +11,25 @@
     <div class="columns large-9">
       <div class="card-attribute row">
         mana cost:
-        {{#each manaCost}}
-          {{{this}}}
-        {{/each}}
+        {{{formattedManaCost displayCard.manaCost}}}
       </div>
       <div class="card-attribute row">Converted Mana Cost: {{displayCard.cmc}}</div>
       <div class="card-attribute row">Colors: {{displayCard.colors}}</div>
       <div class="card-attribute row">Power: {{displayCard.power}}</div>
       <div class="card-attribute row">Toughness: {{displayCard.toughness}}</div>
-      <div class="card-attribute row">Rarity: {{displayCard.rarity}}</div>
+      <div class="card-attribute row">
+        Rarity: {{{formattedSetSymbol displayCard}}} {{displayCard.rarity.value}}
+      </div>
       <div class="card-attribute row">Super-Types: {{displayCard.supertypes}}</div>
       <div class="card-attribute row">Types: {{displayCard.types}}</div>
       <div class="card-attribute row">Sub-Types: {{displayCard.subtypes}}</div>
-      <div class="card-attribute row">Set: {{displaySet.name}}</div>
-      <div class="card-attribute row">Block: {{displayBlock.name}}</div>
+      <div class="card-attribute row">Set: {{displayCard.set.name}}</div>
+      <div class="card-attribute row">Block: {{displayCard.block.name}}</div>
       <br />
       <div class="card-attribute row">
         <div class="columns large-6" style="white-space: pre-line">{{{formattedOracle}}}</div>
       </div>
-      <div class="card-attribute row"></div>
+      <div class="card-attribute row"><i>{{displayCard.flavor}}</i></div>
     </div>
   </div>
 </template>
