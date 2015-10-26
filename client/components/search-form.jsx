@@ -46,7 +46,6 @@ Meteor.startup(function(){
     },
 
     render(){
-      console.log(this.state)
       return (
         <form id='search' action='/search' name='search'>
           <div className='row'>
@@ -82,14 +81,23 @@ Meteor.startup(function(){
             </div>
           </div>
 
-          <div className="row">
-            <div className="columns large-4 large-offset-2 small-12">
+          <div className='row'>
+            <div className='columns large-4 large-offset-2 small-12'>
               <select {...this.editionProps()}>
                 <option value=''>Any Edition</option>
-                {this.renderEditionList()}
+                { this.renderEditionList() }
               </select>
             </div>
           </div>
+
+          <div className='row'>
+            <div className='columns large-8 large-centered small-11 small-centered'>
+              <fieldset>
+                <FormColors />
+              </fieldset>
+            </div>
+          </div>
+
 
           <button className='btn small' type='submit'>Search</button>
         </form>
@@ -102,7 +110,7 @@ Meteor.startup(function(){
         name: 'editionId',
         value: this.state.editionId,
         onChange: SearchAction.selectEdition
-      }
+      };
     },
 
     keywordProps(){
