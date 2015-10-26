@@ -1,5 +1,12 @@
 let checkboxColors, _initSlider;
 
+Template.SearchIndex.onRendered(function(){
+  React.render(
+    React.createElement(SearchForm, SearchStore.getAll()),
+    document.getElementById('search-form-anchor')
+  );
+});
+
 Template.SearchIndex.events({
   'submit #search'(e){
     e.preventDefault();
