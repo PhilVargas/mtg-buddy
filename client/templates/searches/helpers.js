@@ -2,7 +2,7 @@ let checkboxColors, _initSlider;
 
 Template.SearchIndex.onRendered(function(){
   React.render(
-    React.createElement(SearchForm, SearchStore.getAll()),
+    React.createElement(SearchForm, Object.assign({}, SearchStore.getAll(), { editionList: this.data.editionList })),
     document.getElementById('search-form-anchor')
   );
 });

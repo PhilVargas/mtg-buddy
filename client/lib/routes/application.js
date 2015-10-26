@@ -2,13 +2,13 @@ Router.route('/', function(){
   this.render('SearchIndex', {
     data(){
       return {
-        blockList: Blocks.find()
+        editionList: Blocks.find({}).fetch()
       };
     }
   });
 }, {
   name: 'search.index',
-  subscriptions(){
+  waitOn(){
     return [Meteor.subscribe('Blocks', {}, { $fields: ['_id', 'name', 'sets'] })];
   }
 });
