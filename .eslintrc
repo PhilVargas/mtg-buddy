@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
   "root": true,
+  "plugins": [
+    "react"
+  ],
+
   "env": {
     "browser": true,
     "commonjs": true,
@@ -13,6 +17,10 @@
   },
 
   "globals": {
+    "React": true,
+    "SearchAction": true,
+    "SearchStore": true,
+    "Reflux": true,
     "Pages": true,
     "Cards": true,
     "Blocks": true,
@@ -112,7 +120,7 @@
     "yoda": [1, "never", { "exceptRange": true }],
 
   // Variables
-    "init-declarations": [1, "never"],
+    "init-declarations": [1, "never", { "ignoreForLoopInit": true }],
     "no-catch-shadow": 0,
     "no-delete-var": 1,
     "no-label-var": 0,
@@ -193,6 +201,34 @@
     "space-unary-ops": 0,
     "spaced-comment": 0,
     "wrap-regex": 0,
+
+  // React plugin
+    "react/display-name": 1,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-closing-bracket-location": [1, { "location": "tag-aligned" }],
+    "react/jsx-curly-spacing": [1, "always", { "allowMultiline": false }],
+    "react/jsx-indent-props": 0,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-no-duplicate-props": [1, { "ignoreCase": true }],
+    "react/jsx-no-literals": 0,
+    "react/jsx-no-undef": 1,
+    "react/jsx-quotes": [1, "single", "avoid-escape"],
+    "react/jsx-sort-prop-types": [1, { "ignoreCase": true }],
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-set-state": 0,
+    "react/no-unknown-property": 1,
+    "react/prop-types": [1, { "ignore": ["children"] }],
+    "react/react-in-jsx-scope": 0,
+    "react/require-extension": [1, "extensions": [".coffee", ".js", ".jsx" ]],
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 0,
+    "react/wrap-multilines": 1,
 
   // ES6
     "arrow-parens": [0, "as-needed"],
