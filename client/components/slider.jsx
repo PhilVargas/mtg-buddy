@@ -21,7 +21,10 @@ Meteor.startup(function(){
         range: true,
         min: this.props.minRange,
         max: this.props.maxRange,
-        values: [this.props.minRange, this.props.maxRange],
+        values: [
+          this.props.minValue || this.props.minRange,
+          isNaN(parseInt(this.props.maxValue)) ? this.props.maxRange : +this.props.maxValue - 1
+        ],
         step: 1,
         slide: (e, ui) => {
           let min, max;
