@@ -8,6 +8,10 @@ Router.route('/', {
       }
     });
   },
+  onBeforeAction(){
+    Pages.unsubscribe();
+    this.next();
+  },
   loadingTemplate: '_pagesLoading',
   name: 'search.index',
   waitOn(){
@@ -18,6 +22,10 @@ Router.route('/', {
 Router.route('/cards/:_id', {
   name: 'cards.show',
   loadingTemplate: 'pagesLoading',
+  onBeforeAction(){
+    Pages.unsubscribe();
+    this.next();
+  },
   action(){
     this.render('CardsShow', {
       data(){
