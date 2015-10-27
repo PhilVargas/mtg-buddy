@@ -152,7 +152,7 @@ Meteor.startup(function(){
         minValue: this.state.minToughness,
         maxValue: this.state.maxToughness,
         minRange: -1,
-        maxRange: 16,
+        maxRange: 12,
         handleSlide: SearchAction.updateToughness,
         sliderClassName: 'slider-container columns large-11 large-offset-1'
       };
@@ -168,7 +168,7 @@ Meteor.startup(function(){
         minValue: this.state.minPower,
         maxValue: this.state.maxPower,
         minRange: -1,
-        maxRange: 16,
+        maxRange: 12,
         handleSlide: SearchAction.updatePower,
         sliderClassName: 'slider-container columns large-11'
       };
