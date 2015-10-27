@@ -1,3 +1,7 @@
 /* CSS declarations go here */
 
-// @import 'cards';
+#MeteorToys_shell_input {
+  &:focus {
+    background-color: initial;
+  }
+}

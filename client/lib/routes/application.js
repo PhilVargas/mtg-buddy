@@ -1,21 +1,31 @@
-Router.route('/', function(){
-  this.render('SearchIndex', {
-    data(){
-      return {
-        blockList: Blocks.find()
-      };
-    }
-  });
-}, {
+Router.route('/', {
+  action(){
+    this.render('SearchIndex', {
+      data(){
+        return {
+          editionList: Blocks.find({}).fetch()
+        };
+      }
+    });
+  },
+  onBeforeAction(){
+    Pages.unsubscribe();
+    this.next();
+  },
+  loadingTemplate: '_pagesLoading',
   name: 'search.index',
-  subscriptions(){
+  waitOn(){
     return [Meteor.subscribe('Blocks', {}, { $fields: ['_id', 'name', 'sets'] })];
   }
 });
 
 Router.route('/cards/:_id', {
   name: 'cards.show',
-  loadingTemplate: 'loading',
+  loadingTemplate: 'pagesLoading',
+  onBeforeAction(){
+    Pages.unsubscribe();
+    this.next();
+  },
   action(){
     this.render('CardsShow', {
       data(){

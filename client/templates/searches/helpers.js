@@ -1,5 +1,12 @@
 let checkboxColors, _initSlider;
 
+Template.SearchIndex.onRendered(function(){
+  React.render(
+    React.createElement(SearchForm, Object.assign({}, SearchStore.getAll(), { editionList: this.data.editionList })),
+    document.getElementById('search-form-anchor')
+  );
+});
+
 Template.SearchIndex.events({
   'submit #search'(e){
     e.preventDefault();
@@ -103,7 +110,7 @@ checkboxColors = {
     { value: 'White-Black-Red', icon: ['r', 'w', 'b'], label: '(Mardu)' },
     { value: 'White-Red-Green', icon: ['r', 'g', 'w'], label: '(Naya)' },
     { value: 'White-Blue-Green', icon: ['g', 'w', 'u'], label: '(Bant)' },
-    { value: 'Blue-Red-Green', icon: ['g', 'u', 'r'], label: '(Temur)' },
+    { value: 'Blue-Red-Green', icon: ['g', 'u', 'r'], label: '(Temur)' }
   ],
   all: [
     { value: 'White-Blue-Black-Red', icon: ['w', 'u', 'b', 'r'], label: '' },
