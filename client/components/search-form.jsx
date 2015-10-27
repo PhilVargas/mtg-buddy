@@ -84,7 +84,7 @@ Meteor.startup(function(){
                 <option value='Sorcery'>Sorcery</option>
               </select>
             </div>
-            <div className='columns large-4 end'>
+            <div className='columns large-4 small-6 end'>
               <input id='fuzzy-type' type='text' name='fuzzy-type' placeholder='keyword' value='' />
             </div>
           </div>
@@ -112,7 +112,11 @@ Meteor.startup(function(){
           </div>
 
 
-          <button className='btn small' type='submit'>Search</button>
+          <div className='row'>
+            <div className='columns large-offset-2'>
+              <button className='btn small' type='submit'>Search</button>
+            </div>
+          </div>
         </form>
       );
     },
@@ -120,7 +124,7 @@ Meteor.startup(function(){
     toughnessSliderProps(){
       return {
         containerClassName: 'columns large-4 small-12 toughness-slider-container end',
-        labelClassName: 'columns large-11 large-offset-1',
+        labelClassName: 'slider-label columns large-11 large-offset-1',
         labelName: 'toughness',
         minName: 'minToughness',
         maxName: 'maxToughness',
@@ -129,14 +133,14 @@ Meteor.startup(function(){
         minRange: -1,
         maxRange: 16,
         handleSlide: SearchAction.updateToughness,
-        sliderClassName: 'columns large-11 large-offset-1'
+        sliderClassName: 'slider-container columns large-11 large-offset-1'
       };
     },
 
     powerSliderProps(){
       return {
         containerClassName: 'columns large-4 large-offset-2 small-12 power-slider-container',
-        labelClassName: 'columns large-11',
+        labelClassName: 'slider-label columns large-11',
         labelName: 'power',
         minName: 'minPower',
         maxName: 'maxPower',
@@ -145,7 +149,7 @@ Meteor.startup(function(){
         minRange: -1,
         maxRange: 16,
         handleSlide: SearchAction.updatePower,
-        sliderClassName: 'columns large-11'
+        sliderClassName: 'slider-container columns large-11'
       };
     },
 
