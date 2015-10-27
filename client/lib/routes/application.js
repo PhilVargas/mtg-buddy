@@ -1,12 +1,14 @@
-Router.route('/', function(){
-  this.render('SearchIndex', {
-    data(){
-      return {
-        editionList: Blocks.find({}).fetch()
-      };
-    }
-  });
-}, {
+Router.route('/', {
+  action(){
+    this.render('SearchIndex', {
+      data(){
+        return {
+          editionList: Blocks.find({}).fetch()
+        };
+      }
+    });
+  },
+  loadingTemplate: '_pagesLoading',
   name: 'search.index',
   waitOn(){
     return [Meteor.subscribe('Blocks', {}, { $fields: ['_id', 'name', 'sets'] })];
@@ -15,7 +17,7 @@ Router.route('/', function(){
 
 Router.route('/cards/:_id', {
   name: 'cards.show',
-  loadingTemplate: 'loading',
+  loadingTemplate: 'pagesLoading',
   action(){
     this.render('CardsShow', {
       data(){
