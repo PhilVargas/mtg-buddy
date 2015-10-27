@@ -2,16 +2,16 @@ Meteor.startup(function(){
   SearchStore = Reflux.createStore({
     listenables: SearchAction,
 
-    init(){
-      this.name = '';
-      this.types = '';
-      this.keyword = '';
-      this.rarity = '';
-      this.editionId = '';
-      this.maxPower = '';
-      this.minPower = '';
-      this.minToughness = '';
-      this.maxToughness = '';
+    init(opts = {}){
+      this.name = opts.name || '';
+      this.types = opts.types || '';
+      this.keyword = opts.keyword || '';
+      this.rarity = opts.rarity || '';
+      this.editionId = opts.editionId || '';
+      this.maxPower = opts.maxPower || '';
+      this.minPower = opts.minPower || '';
+      this.minToughness = opts.minToughness || '';
+      this.maxToughness = opts.maxToughness || '';
     },
 
     getAll(){
