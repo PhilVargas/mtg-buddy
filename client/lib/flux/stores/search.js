@@ -12,6 +12,8 @@ Meteor.startup(function(){
       this.minPower = opts.minPower || '';
       this.minToughness = opts.minToughness || '';
       this.maxToughness = opts.maxToughness || '';
+      this.minCmc = opts.minCmc || '';
+      this.maxCmc = opts.maxCmc || '';
     },
 
     getAll(){
@@ -21,6 +23,8 @@ Meteor.startup(function(){
         keyword: this.keyword,
         rarity: this.rarity,
         editionId: this.editionId,
+        maxCmc: this.maxCmc,
+        minCmc: this.minCmc,
         maxPower: this.maxPower,
         minPower: this.minPower,
         minToughness: this.minToughness,
@@ -62,6 +66,11 @@ Meteor.startup(function(){
 
     onUpdateName(e){
       this.updateAttribs({ name: e.target.value });
+      this.trigger(this.getAll());
+    },
+
+    onUpdateCmc(minCmc, maxCmc){
+      this.updateAttribs({ minCmc, maxCmc });
       this.trigger(this.getAll());
     },
 

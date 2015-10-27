@@ -8,8 +8,10 @@ Meteor.startup(function(){
       editionId: React.PropTypes.string.isRequired,
       editionList: React.PropTypes.array.isRequired,
       keyword: React.PropTypes.string.isRequired,
+      maxCmc: React.PropTypes.string.isRequired,
       maxPower: React.PropTypes.string.isRequired,
       maxToughness: React.PropTypes.string.isRequired,
+      minCmc: React.PropTypes.string.isRequired,
       minPower: React.PropTypes.string.isRequired,
       minToughness: React.PropTypes.string.isRequired,
       name: React.PropTypes.string.isRequired,
@@ -23,6 +25,8 @@ Meteor.startup(function(){
         rarity: this.props.rarity,
         types: this.props.types,
         editionId: this.props.editionId,
+        maxCmc: this.props.maxCmc,
+        minCmc: this.props.minCmc,
         maxPower: this.props.maxPower,
         minPower: this.props.minPower,
         minToughness: this.props.minToughness,
@@ -96,6 +100,7 @@ Meteor.startup(function(){
                 { this.renderEditionList() }
               </select>
             </div>
+            <Slider {...this.cmcSliderProps()} />
           </div>
 
           <div className='row'>
@@ -119,6 +124,22 @@ Meteor.startup(function(){
           </div>
         </form>
       );
+    },
+
+    cmcSliderProps(){
+      return {
+        containerClassName: 'columns large-4 small-12 cmc-slider-container end',
+        labelClassName: 'slider-label columns large-11 large-offset-1',
+        labelName: 'cmc',
+        minName: 'minCmc',
+        maxName: 'maxCmc',
+        minValue: this.state.minCmc,
+        maxValue: this.state.maxCmc,
+        minRange: -1,
+        maxRange: 16,
+        handleSlide: SearchAction.updateCmc,
+        sliderClassName: 'slider-container columns large-11 large-offset-1'
+      };
     },
 
     toughnessSliderProps(){
