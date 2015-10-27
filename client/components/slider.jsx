@@ -13,6 +13,7 @@ Meteor.startup(function(){
       minName: React.PropTypes.string.isRequired,
       minRange: React.PropTypes.number.isRequired,
       minValue: React.PropTypes.string.isRequired,
+      sliderClassName: React.PropTypes.string
     },
 
     componentDidMount(){
@@ -51,7 +52,7 @@ Meteor.startup(function(){
           <input type='hidden' value={ this.props.minValue } name={ this.props.minName } />
           <input type='hidden' value={ this.props.maxValue } name={ this.props.maxName } />
           <div className='row'>
-            <div className='columns large-11'>
+            <div className={ this.props.sliderClassName }>
               <div ref='slider'></div>
             </div>
           </div>

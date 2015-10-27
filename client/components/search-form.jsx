@@ -100,23 +100,7 @@ Meteor.startup(function(){
 
           <div className='row'>
             <Slider {...this.powerSliderProps()} />
-            <div className='columns large-4 small-12 toughness-slider-container end'>
-              <div className='row toughness-label-container'>
-                <div className='columns large-11 large-offset-1'>
-                  <span>Toughness: From </span>
-                  <span id='min-toughness-label' className='toughness-label'>Any</span>
-                  <span> To </span>
-                  <span id='max-toughness-label' className='toughness-label'>Any</span>
-                </div>
-              </div>
-              <input type='hidden' value='' id='min-toughness' name='minToughness' />
-              <input type='hidden' value='' id='max-toughness' name='maxToughness' />
-              <div className='row'>
-                <div className='columns large-11 large-offset-1'>
-                  <div id='toughness-slider'></div>
-                </div>
-              </div>
-            </div>
+            <Slider {...this.toughnessSliderProps()} />
           </div>
 
           <div className='row'>
@@ -133,6 +117,22 @@ Meteor.startup(function(){
       );
     },
 
+    toughnessSliderProps(){
+      return {
+        containerClassName: 'columns large-4 small-12 toughness-slider-container end',
+        labelClassName: 'columns large-11 large-offset-1',
+        labelName: 'toughness',
+        minName: 'minToughness',
+        maxName: 'maxToughness',
+        minValue: this.state.minToughness,
+        maxValue: this.state.maxToughness,
+        minRange: -1,
+        maxRange: 16,
+        handleSlide: SearchAction.updateToughness,
+        sliderClassName: 'columns large-11 large-offset-1'
+      };
+    },
+
     powerSliderProps(){
       return {
         containerClassName: 'columns large-4 large-offset-2 small-12 power-slider-container',
@@ -144,7 +144,8 @@ Meteor.startup(function(){
         maxValue: this.state.maxPower,
         minRange: -1,
         maxRange: 16,
-        handleSlide: SearchAction.updatePower
+        handleSlide: SearchAction.updatePower,
+        sliderClassName: 'columns large-11'
       };
     },
 

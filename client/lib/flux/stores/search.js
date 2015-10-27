@@ -44,6 +44,7 @@ Meteor.startup(function(){
       this.updateAttribs({ editionId: e.target.value });
       this.trigger(this.getAll());
     },
+
     onSelectTypes(e){
       this.updateAttribs({ types: e.target.value });
       this.trigger(this.getAll());
@@ -61,6 +62,11 @@ Meteor.startup(function(){
 
     onUpdateName(e){
       this.updateAttribs({ name: e.target.value });
+      this.trigger(this.getAll());
+    },
+
+    onUpdateToughness(minToughness, maxToughness){
+      this.updateAttribs({ minToughness, maxToughness });
       this.trigger(this.getAll());
     },
 
