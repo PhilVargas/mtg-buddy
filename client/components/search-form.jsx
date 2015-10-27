@@ -8,6 +8,10 @@ Meteor.startup(function(){
       editionId: React.PropTypes.string.isRequired,
       editionList: React.PropTypes.array.isRequired,
       keyword: React.PropTypes.string.isRequired,
+      maxPower: React.PropTypes.string.isRequired,
+      maxToughness: React.PropTypes.string.isRequired,
+      minPower: React.PropTypes.string.isRequired,
+      minToughness: React.PropTypes.string.isRequired,
       name: React.PropTypes.string.isRequired,
       rarity: React.PropTypes.string.isRequired,
       types: React.PropTypes.string.isRequired,
@@ -19,6 +23,10 @@ Meteor.startup(function(){
         rarity: this.props.rarity,
         types: this.props.types,
         editionId: this.props.editionId,
+        maxPower: this.props.maxPower,
+        minPower: this.props.minPower,
+        minToughness: this.props.minToughness,
+        maxToughness: this.props.maxToughness,
         keyword: this.props.keyword
       };
     },
@@ -91,6 +99,27 @@ Meteor.startup(function(){
           </div>
 
           <div className='row'>
+            <Slider {...this.powerSliderProps()} />
+            <div className='columns large-4 small-12 toughness-slider-container end'>
+              <div className='row toughness-label-container'>
+                <div className='columns large-11 large-offset-1'>
+                  <span>Toughness: From </span>
+                  <span id='min-toughness-label' className='toughness-label'>Any</span>
+                  <span> To </span>
+                  <span id='max-toughness-label' className='toughness-label'>Any</span>
+                </div>
+              </div>
+              <input type='hidden' value='' id='min-toughness' name='minToughness' />
+              <input type='hidden' value='' id='max-toughness' name='maxToughness' />
+              <div className='row'>
+                <div className='columns large-11 large-offset-1'>
+                  <div id='toughness-slider'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className='row'>
             <div className='columns large-8 large-centered small-11 small-centered'>
               <fieldset>
                 <FormColors />
@@ -102,6 +131,21 @@ Meteor.startup(function(){
           <button className='btn small' type='submit'>Search</button>
         </form>
       );
+    },
+
+    powerSliderProps(){
+      return {
+        containerClassName: 'columns large-4 large-offset-2 small-12 power-slider-container',
+        labelClassName: 'columns large-11',
+        labelName: 'power',
+        minName: 'minPower',
+        maxName: 'maxPower',
+        minValue: this.state.minPower,
+        maxValue: this.state.maxPower,
+        minRange: -1,
+        maxRange: 16,
+        handleSlide: SearchAction.updatePower
+      };
     },
 
     editionProps(){

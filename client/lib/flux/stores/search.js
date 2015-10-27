@@ -8,6 +8,10 @@ Meteor.startup(function(){
       this.keyword = '';
       this.rarity = '';
       this.editionId = '';
+      this.maxPower = '';
+      this.minPower = '';
+      this.minToughness = '';
+      this.maxToughness = '';
     },
 
     getAll(){
@@ -17,6 +21,10 @@ Meteor.startup(function(){
         keyword: this.keyword,
         rarity: this.rarity,
         editionId: this.editionId,
+        maxPower: this.maxPower,
+        minPower: this.minPower,
+        minToughness: this.minToughness,
+        maxToughness: this.maxToughness,
       };
     },
 
@@ -54,6 +62,11 @@ Meteor.startup(function(){
     onUpdateName(e){
       this.updateAttribs({ name: e.target.value });
       this.trigger(this.getAll());
+    },
+
+    onUpdatePower(minPower, maxPower){
+      this.updateAttribs({ minPower, maxPower });
+      this.trigger(this.getAll());
     }
   });
-})
+});
