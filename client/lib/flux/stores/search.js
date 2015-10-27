@@ -24,7 +24,7 @@ Meteor.startup(function(){
         maxPower: this.maxPower,
         minPower: this.minPower,
         minToughness: this.minToughness,
-        maxToughness: this.maxToughness,
+        maxToughness: this.maxToughness
       };
     },
 

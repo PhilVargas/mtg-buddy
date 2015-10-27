@@ -14,7 +14,7 @@ Meteor.startup(function(){
       minToughness: React.PropTypes.string.isRequired,
       name: React.PropTypes.string.isRequired,
       rarity: React.PropTypes.string.isRequired,
-      types: React.PropTypes.string.isRequired,
+      types: React.PropTypes.string.isRequired
     },
 
     getInitialState(){

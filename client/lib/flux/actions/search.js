@@ -5,6 +5,6 @@ SearchAction = {
   udpateKeyword: Reflux.createAction({ sync: true }),
   selectEdition: Reflux.createAction({ sync: true }),
   updatePower: Reflux.createAction({ sync: true }),
-  updateToughness: Reflux.createAction({ sync: true }),
+  updateToughness: Reflux.createAction({ sync: true })
 };
 
