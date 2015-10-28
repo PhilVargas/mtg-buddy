@@ -24,3 +24,5 @@ linto:jquery-ui
 alethes:pages
 react
 jhribal:reflux
+accounts-ui
+accounts-password
