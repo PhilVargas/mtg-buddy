@@ -5,3 +5,17 @@
     background-color: initial;
   }
 }
+
+#login-dropdown-list {
+  input {
+    position: initial;
+  }
+}
+
+li.has-form.login {
+  padding-top: .5rem;
+  #login-sign-in-link, #login-name-link {
+    text-decoration: none;
+    color: #fff;
+  }
+}

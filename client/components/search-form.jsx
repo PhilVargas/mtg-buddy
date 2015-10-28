@@ -130,7 +130,7 @@ Meteor.startup(function(){
       return {
         containerClassName: 'columns large-4 small-12 cmc-slider-container end',
         labelClassName: 'slider-label columns large-11 large-offset-1',
-        labelName: 'cmc',
+        labelName: 'casting cost',
         minName: 'minCmc',
         maxName: 'maxCmc',
         minValue: this.state.minCmc,
