@@ -1,35 +1,110 @@
 <template name="CardsShow">
-  <div class="row card-container">
-    <div class="card-title">
-      <h2>{{displayCard.name}}</h2>
+  <article>
+    <div class="row card-container">
+      <div class="card-title">
+        <h2>{{displayCard.name}}</h2>
+      </div>
+      <div class="columns large-3 small-10 small-centered large-uncentered">
+        <div class="card-preview">
+          <img src={{displayCard.imageUrl}} />
+        </div>
+      </div>
+      <section id='card-attributes' class="panel columns large-6 small-12 end">
+        <div class="card-attribute row collapse multiverseid">
+          <div class='columns large-4 small-6 attribute'>MultiverseId:</div>
+          <div class='columns large-8 small-6 value'>
+            <a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid={{displayCard.multiverseid}}" rel="nofollow" target="_blank">
+              {{displayCard.multiverseid}}
+            </a>
+          </div>
+        </div>
+        <div class="card-attribute row collapse mana-cost">
+          <div class='columns large-4 small-6 attribute'>Mana Cost:</div>
+          <div class='columns large-8 small-6 value'>
+          {{{formattedManaCost displayCard.manaCost}}}
+          </div>
+        </div>
+        <div class="card-attribute collapse row cmc">
+          <div class='columns large-4 small-6 attribute'>Converted Cost:</div>
+          <div class='columns large-8 small-6 value'>{{displayCard.cmc}}</div>
+        </div>
+        <div class="card-attribute collapse row colors">
+          <div class='columns large-4 small-6 attribute'>Colors:</div>
+          <div class='columns large-8 small-6 value'>
+            {{#each displayCard.colors}}
+              {{this}}
+            {{/each}}
+          </div>
+        </div>
+        {{#if notNull displayCard.power}}
+          <div class="card-attribute collapse row power">
+            <div class='columns large-4 small-6 attribute'>Power:</div>
+            <div class='columns large-8 small-6 value'>{{displayCard.power}}</div>
+          </div>
+        {{/if}}
+        {{#if notNull displayCard.toughness}}
+          <div class="card-attribute collapse row toughness">
+            <div class='columns large-4 small-6 attribute'>Toughness:</div>
+            <div class='columns large-8 small-6 value'>{{displayCard.toughness}}</div>
+          </div>
+        {{/if}}
+        <div class="card-attribute collapse row rarity">
+          <div class='columns large-4 small-6 attribute'>Rarity:</div>
+          <div class='columns large-8 small-6 value'>{{{formattedSetSymbol displayCard}}} {{displayCard.rarity.value}}</div>
+        </div>
+        {{#if notEmpty displayCard.supertypes}}
+          <div class="card-attribute collapse row supertypes">
+            <div class='columns large-4 small-6 attribute'>Super-Types:</div>
+            <div class='columns large-8 small-6 value'>{{displayCard.supertypes}}</div>
+          </div>
+        {{/if}}
+        <div class="card-attribute collapse row types">
+          <div class='columns large-4 small-6 attribute'>Types:</div>
+          <div class='columns large-8 small-6 value'>
+            {{#each displayCard.types}}
+              {{this}}
+            {{/each}}
+          </div>
+        </div>
+        {{#if notEmpty displayCard.subtypes}}
+          <div class="card-attribute collapse row subtypes">
+            <div class='columns large-4 small-6 attribute'>Sub-Types:</div>
+            <div class='columns large-8 small-6 value'>
+              {{#each displayCard.subtypes}}
+                {{this}}
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+        <div class="card-attribute collapse row set">
+          <div class='columns large-4 small-6 attribute'>Set:</div>
+          <div class='columns large-8 small-6 value'>{{displayCard.set.name}}</div>
+        </div>
+        <div class="card-attribute collapse row block">
+          <div class='columns large-4 small-6 attribute'>Block:</div>
+          <div class='columns large-8 small-6 value'>{{displayCard.block.name}}</div>
+        </div>
+        <br />
+        <section>
+          <div class="row collapse card-attribute">
+            <div class="columns">
+              <i>Oracle:</i>
+            </div>
+            <div class="row">
+              <div class="oracle columns large-10">{{{formattedOracle}}}</div>
+            </div>
+          </div>
+          <br />
+          <div class="row collapse card-attribute">
+            <div class="columns">
+              <i>Flavor:</i>
+            </div>
+            <div class="row">
+              <div class="flavor columns large-10"><i>{{displayCard.flavor}}</i></div>
+            </div>
+          </div>
+        </section>
+      </section>
     </div>
-    <div class="columns large-3">
-      <div class="card-preview">
-        <img src={{displayCard.imageUrl}} />
-      </div>
-    </div>
-    <div class="columns large-9">
-      <div class="card-attribute row">
-        mana cost:
-        {{{formattedManaCost displayCard.manaCost}}}
-      </div>
-      <div class="card-attribute row">Converted Mana Cost: {{displayCard.cmc}}</div>
-      <div class="card-attribute row">Colors: {{displayCard.colors}}</div>
-      <div class="card-attribute row">Power: {{displayCard.power}}</div>
-      <div class="card-attribute row">Toughness: {{displayCard.toughness}}</div>
-      <div class="card-attribute row">
-        Rarity: {{{formattedSetSymbol displayCard}}} {{displayCard.rarity.value}}
-      </div>
-      <div class="card-attribute row">Super-Types: {{displayCard.supertypes}}</div>
-      <div class="card-attribute row">Types: {{displayCard.types}}</div>
-      <div class="card-attribute row">Sub-Types: {{displayCard.subtypes}}</div>
-      <div class="card-attribute row">Set: {{displayCard.set.name}}</div>
-      <div class="card-attribute row">Block: {{displayCard.block.name}}</div>
-      <br />
-      <div class="card-attribute row">
-        <div class="columns large-6" style="white-space: pre-line">{{{formattedOracle}}}</div>
-      </div>
-      <div class="card-attribute row"><i>{{displayCard.flavor}}</i></div>
-    </div>
-  </div>
+  </article>
 </template>
