@@ -15,6 +15,7 @@ formattedManaCost = function(cost){
 };
 
 formattedSetSymbol = function(card){
+  if (!card) { return; }
   return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.value.toLowerCase()}"></i>`;
 };
 
