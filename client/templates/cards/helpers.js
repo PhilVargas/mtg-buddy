@@ -15,6 +15,7 @@ formattedManaCost = function(cost){
 };
 
 formattedSetSymbol = function(card){
+  if (!card) { return; }
   return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.value.toLowerCase()}"></i>`;
 };
 
@@ -127,6 +128,14 @@ Template.CardsPage.helpers({
 });
 
 Template.CardsShow.helpers({
+  notNull(attrib){
+    return !(attrib === null || typeof attrib === 'undefined');
+  },
+
+  notEmpty(attrib){
+    return attrib && attrib.length > 0;
+  },
+
   formattedManaCost,
 
   formattedSetSymbol,
