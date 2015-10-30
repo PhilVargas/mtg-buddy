@@ -22,7 +22,7 @@ formattedSetSymbol = function(card){
 Template.CardsIndex.events({
   'click .previous-page'(e){
     e.preventDefault();
-    history.back();
+    Router.go('search.index');
   },
 
   'click #name-header'(){
