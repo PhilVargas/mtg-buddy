@@ -23,6 +23,12 @@ section#card-attributes {
     text-align: right;
     margin: 20px 0;
   }
+  .sort-info-container {
+    margin: 20px 0;
+  }
+  .per-page-input-container, .prefix-container {
+    padding-top: 15px;
+  }
 }
 
 .card-page {
