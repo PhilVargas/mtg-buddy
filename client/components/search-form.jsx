@@ -89,7 +89,7 @@ Meteor.startup(function(){
               </select>
             </div>
             <div className='columns large-4 small-6 end'>
-              <input id='fuzzy-type' type='text' name='fuzzy-type' placeholder='keyword' value='' />
+              <input {...this.keywordProps()}/>
             </div>
           </div>
 
@@ -109,7 +109,7 @@ Meteor.startup(function(){
           </div>
 
           <div className='row'>
-            <div className='columns large-8 large-centered small-11 small-centered'>
+            <div className='columns large-8 large-centered small-12'>
               <fieldset>
                 <FormColors />
               </fieldset>
