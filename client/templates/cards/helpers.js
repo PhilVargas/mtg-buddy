@@ -1,4 +1,4 @@
-let manaMap, typesMap, formattedManaCost, formattedSetSymbol;
+let manaMap, typesMap, formattedManaCost, formattedSetSymbol, _getSortInfo, _sortMap;
 
 formattedManaCost = function(cost){
   let formattedCost;
@@ -19,42 +19,70 @@ formattedSetSymbol = function(card){
   return `<i class="mtg ${card.set.name.toLowerCase().replace(/\s/g, '-').replace(/[']/g, '')} ${card.rarity.value.toLowerCase()}"></i>`;
 };
 
+_sortMap = {
+  'set.name': 'Set',
+  'rarity.rank': 'Rarity',
+  cmc: 'Converted Cost',
+  name: 'Name'
+};
+
+_getSortInfo = function(){
+  let sortType, sortOrder;
+
+  sortType = Object.keys(Pages.sort)[0];
+  sortOrder = (Pages.sort[sortType] === -1 ? 'Desc' : 'Asc');
+
+  return `Sort by: ${_sortMap[sortType]} (${sortOrder})`;
+};
+
+Template.CardsIndex.onCreated(function(){
+  this.sortInfo = new ReactiveVar(_getSortInfo());
+})
+
 Template.CardsIndex.events({
   'click .previous-page'(e){
     e.preventDefault();
     Router.go('search.index');
   },
 
-  'click #name-header'(){
+  'click #name-header'(e, template){
     let sortOrder;
 
     sortOrder = (Pages.sort.name === 1 ? -1 : 1);
     Pages.set({ sort: { name: 1 * sortOrder } });
+    template.sortInfo.set(_getSortInfo());
   },
 
-  'click #edition-header'(){
+  'click #edition-header'(e, template){
     let sortOrder;
 
     sortOrder = (Pages.sort['set.name'] === 1 ? -1 : 1);
     Pages.set({ sort: { 'set.name': 1 * sortOrder, name: 1 } });
+    template.sortInfo.set(_getSortInfo());
   },
 
-  'click #rarity-header'(){
+  'click #rarity-header'(e, template){
     let sortOrder;
 
     sortOrder = (Pages.sort['rarity.rank'] === 1 ? -1 : 1);
     Pages.set({ sort: { 'rarity.rank': 1 * sortOrder, name: 1 } });
+    template.sortInfo.set(_getSortInfo());
   },
 
-  'click #cost-header'(){
+  'click #cost-header'(e, template){
     let sortOrder;
 
     sortOrder = (Pages.sort.cmc === 1 ? -1 : 1);
     Pages.set({ sort: { cmc: 1 * sortOrder, 'set.name': 1, name: 1 } });
+    template.sortInfo.set(_getSortInfo());
   }
 });
 
 Template.CardsIndex.helpers({
+  sortInfo(){
+    return Template.instance().sortInfo.get();
+  },
+
   formattedManaCost,
 
   formattedSetSymbol,
