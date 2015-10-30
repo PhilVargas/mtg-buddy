@@ -5,6 +5,7 @@
 .card-preview {
   text-align: center;
 }
+
 section#card-attributes {
   .card-attribute {
     .attribute {
@@ -17,4 +18,43 @@ section#card-attributes {
   }
 }
 
+.cards-index-header-container, .cards-index-footer-container {
+  .header {
+    text-align: center;
+  }
+  .back-link-container {
+    text-align: right;
+    margin: 20px 0;
+  }
+}
 
+.card-page {
+  .card-set-symbol, .card-p-t {
+    text-align: center;
+  }
+}
+#p-t-header, #rarity-header {
+  text-align: center;
+}
+
+@media only screen and (max-width: 40em) {
+  .cards-index-header-container, .cards-index-footer-container {
+    .back-link-container {
+      text-align: center;
+    }
+  }
+
+  .card-page {
+    .card-name {
+      text-align: center;
+    }
+
+    .card-set, .card-types {
+      text-align: right;
+    }
+
+    .card-set-symbol, .card-cost {
+      text-align: left;
+    }
+  }
+}
