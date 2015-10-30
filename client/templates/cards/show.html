@@ -87,21 +87,25 @@
         <br />
         <section>
           <div class="row collapse card-attribute">
+            {{#if displayCard.oracle}}
             <div class="columns">
               <i>Oracle:</i>
             </div>
             <div class="row">
               <div class="oracle columns large-10">{{{formattedOracle}}}</div>
             </div>
+            {{/if}}
           </div>
           <br />
           <div class="row collapse card-attribute">
+            {{#if displayCard.flavor}}
             <div class="columns">
               <i>Flavor:</i>
             </div>
             <div class="row">
               <div class="flavor columns large-10"><i>{{displayCard.flavor}}</i></div>
             </div>
+            {{/if}}
           </div>
         </section>
       </section>
