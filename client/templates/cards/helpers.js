@@ -41,7 +41,8 @@ Template.CardsIndex.onCreated(function(){
 
 Template.CardsIndex.events({
   'change select.per-page'(e){
-    Pages.set({ perPage: +e.target.value })
+    e.target.blur();
+    Pages.set({ perPage: +e.target.value });
   },
 
   'click .previous-page'(e){
