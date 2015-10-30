@@ -5,3 +5,10 @@
 .slider-container .ui-slider-handle {
   cursor: pointer;
 }
+
+
+@media only screen and (max-width: 40em) {
+  .cmc-slider-container, .power-slider-container, .toughness-slider-container {
+    margin: 10px 0;
+  }
+}
