@@ -20,6 +20,11 @@ formattedSetSymbol = function(card){
 };
 
 Template.CardsIndex.events({
+  'click .previous-page'(e){
+    e.preventDefault();
+    history.back();
+  },
+
   'click #name-header'(){
     let sortOrder;
 
