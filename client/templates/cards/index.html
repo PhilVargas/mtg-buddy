@@ -2,12 +2,31 @@
   <div class="row cards-index-header-container">
     <div class='header small-centered small-7 large-uncentered columns'><h3>Search Results</h3></div>
     <div class="columns panel">
-      <div class="columns large-6 small-12">
+      <div class="columns large-5 small-12">
         {{> pagesNav}}
       </div>
-      <div class="columns large-6 small-12 large-uncentered">
-        <div class='back-link-container'>
-          <a class="previous-page" href="#">Back to Search</a>
+      <div class="columns large-7 small-12">
+        <div class="row collapse">
+          <div class="sort-info-container columns large-6 hide-for-small-only">
+            {{ sortInfo }}
+          </div>
+          <div class="small-12 large-3 columns">
+            <div class="row collapse per-page-container">
+              <div class="small-7 large-7 columns prefix-container">
+                <span class="prefix">Per Page</span>
+              </div>
+              <div class="small-5 large-5 columns per-page-input-container end">
+                <select class='per-page'>
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class='back-link-container columns large-3 small-12'>
+            <a class="previous-page" href="/">Back to Search</a>
+          </div>
         </div>
       </div>
     </div>
@@ -44,7 +63,7 @@
         {{> pagesNav}}
       </div>
       <div class="columns large-6">
-        <div class='back-link-container'><a class="previous-page" href="#">Back to Search</a></div>
+        <div class='back-link-container'><a class="previous-page" href="/">Back to Search</a></div>
       </div>
     </div>
   </div>
